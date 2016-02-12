@@ -1,0 +1,20 @@
+
+------------------------------------
+  Logging start.  ## CURRENT TIME  : [11/26, 2015   15:59  10.342]  ## COMMAND LINE  : 
+cmd /C "gen_csini.exe"
+------------------------------------
+[STD-IN] : D:\DB\Dropbox\Development\24ghz_kuechenbeleuchtung_steuerung\atollic_workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
+GUI is waiting for subprocess to be done...
+Execution done. EXIT CODE = 0
+  Logging finished.  ## CURRENT TIME  : [11/26, 2015   15:59  12.120]
+------------------------------------
+
+------------------------------------
+  Logging start.  ## CURRENT TIME  : [12/17, 2015   9:40  51.206]  ## COMMAND LINE  : 
+cmd /C "gen_csini.exe"
+------------------------------------
+[STD-IN] : D:\DB\Dropbox\Development\24ghz_kuechenbeleuchtung_steuerung\atollic_workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
+GUI is waiting for subprocess to be done...
+Execution done. EXIT CODE = 0
+  Logging finished.  ## CURRENT TIME  : [12/17, 2015   9:40  56.100]
+------------------------------------

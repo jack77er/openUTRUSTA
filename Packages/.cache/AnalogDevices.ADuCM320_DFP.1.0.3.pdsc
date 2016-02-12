@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>AnalogDevices</vendor>
+  <name>ADuCM320_DFP</name>
+  <description>Analog Devices ADuCM320 Device Support and Examples</description>
+  <url>http://www.analog.com/media/en/engineering-tools/design-tools</url>
+  <supportContact>http://www.analog.com/en/content/technical_support_page/fca.html</supportContact>
+  <license>License\License.txt</license>  
+  
+  <releases>
+    <release version="1.0.3">
+      Fixed errors due to new ADI website
+      Added low level peripheral libraries
+      Updated device header file and SVD
+    </release>
+    <release version="1.0.1">
+      Made pack compliant to Pack schema 1.3 
+      Added RTX example
+      Fixed Flashloader Sector Erase
+    </release>
+    <release version="1.0.0">
+      Initial Release
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>Analog Devices</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package Analog Devices</keyword>
+    <keyword>ADuCM320</keyword>
+  </keywords>
+  <devices>
+    <family Dfamily="ADuCM320 Series" Dvendor="Analog Devices:1">
+
+      <!-- ******************************  ADuCM320  ****************************** -->
+      <device Dname="ADuCM320">
+        <processor Dcore="Cortex-M3" DcoreVersion="r2p1" Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="80000000"/>
+        <book    name="Documents\DUI0552A_cortex_m3_dgug.pdf"           title="Cortex-M3 Generic User Guide"/>
+
+        <debug      svd="SVD\ADuCM320.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="1"   default="1"/>
+        <algorithm  name="Flash\ADUCM320.FLM"  start="0x00000000"  size="0x40000"  RAMstart="0x20000000"  RAMsize="0x0800"  default="1"/>
+        <book    name="Documents\UG-498.pdf"          title="ADuCM320 User Guide"/>
+        <!--<book    name="Documents\ADuCM320.pdf"        title="ADuCM320 Data Sheet"/>-->
+        <book    name="Documents\AN-1310.pdf"         title="ADuCM320 Flash Programming via MDIO"/>
+        <description>
+The ADuCM320 is a Precision Analog Microcontroller, 14-Bit Analog I/O with MDIO interface, ARM Cortex M3
+Typical applications include Optical networking – 10G, 40G and 100G modules, Industrial control and automation systems,
+Smart sensors, precision instrumentation and Base station systems.
+        </description>
+        <feature type="ADC"           n="16"      m="14"    name="Multichannel, 14-bit 1MSPS ADC"/>
+        <feature type="DAC"           n="8"       m="12"/>
+        <feature type="AnalogOther"   n="4"       name="0 mA to 150 mA IDACs"/>
+        <feature type="Other"         n="1"       name="MDIO slave up to 4 MHz"/>
+        <feature type="PLL"           n="1"       name="80 MHz PLL with programmable divider"/>
+        <feature type="IntRC"         n="16000000" m="16000000"      name="Internal oscillator with +/-3% accuracy"/>
+        <feature type="XTAL"          n="16000000" m="16000000"      name="External Crystal Oscillator"/>
+        <feature type="Memory"        n="262144"  name="256kB Flash memory"/>
+        <feature type="Memory"        n="32768"   name="8kB SRAM"/>
+        <feature type="SPI"           n="2"       m="40000000"/>
+        <feature type="I2C"           n="2"/>
+        <feature type="PWM"           n="6"       m="16"/>
+        <feature type="UART"          n="1"       m="500000"/>
+        <feature type="IOs"           n="40"/>
+        <feature type="Timer"         n="3"       m="16"/>
+        <feature type="WDT"           n="1"       name="16 bit Watchdog timer"/>
+        <feature type="TimerOther"    n="1"       name="32 bit Wake-up timer"/>
+        <feature type="DMA"           n="14"     />        
+        <feature type="NVIC"          n="54"     />        
+        <feature type="TempSens"      n="1"     />        
+        <feature type="Temp"          n="-40"     m="80"/>
+        <feature type="VCC"           n="2.9"    m="3.60"/>
+        <feature type="BGA"           n="96"/>
+        <compile header="Device\Include\ADuCM320.h"  define="ADuCM320"/>
+      </device> 
+    </family>
+  </devices>
+
+  <!-- boards section (mandatory for Board Support Packs) -->
+  <boards>
+      <board vendor="Analog Devices" name="EVAL-ADuCM320EBZ" revision="Rev. D" orderForm="http://www.analog.com/en/evaluation/eval-aducm320/eb.html">
+      <description>Analog Devices ADuCM320 Evaluation Kit</description>
+      <image small="Images\EVAL-ADuCM320EBZ_small.jpg" large="Images\EVAL-ADuCM320EBZ.jpg"/>
+      <book category="setup"          name="Documents\UG-692.pdf" title="Get Started Guide"/>
+      <book category="schematic"     name="Documents\EVAL-ADuCM320EBZ RevD LAYERS.pdf"   title="Layout"/>
+      <book category="schematic"     name="Documents\EVAL-ADuCM320EBZ RevD SCH.pdf"      title="Schematic"/>
+      <mountedDevice    deviceIndex="0" Dvendor="Analog Devices:1" Dname="ADuCM320"/>
+      <debugInterface adapter="J-Link Lite ADI" connector="Mini-USB"/>
+      <feature type="PWR"       n="4" m="5.5"      name="POWER Connector J1 for external supply"/>
+      <feature type="PWR"       n="2.5"            name="POWER Connector J11 for external supply"/>
+      <feature type="XTAL"      n="16000000"/>
+      <feature type="USB"       n="1"              name="Mini-USB connector for UART"/>
+      <feature type="RS232"     n="1"              name="TTL level UART connector"/>      
+      <feature type="DIO"       n="29"             />
+      <feature type="AIO"       n="16"             name="Analog inputs to ADC"/>
+      <feature type="AIO"       n="8"              name="VDAC Outputs"/>
+      <feature type="AIO"       n="4"              name="IDAC Outputs"/>
+      <feature type="Button"    n="3"              name="Push-Buttons: external IRQ, Reset and Serial download"/>
+      <feature type="LED"       n="1"              name="User LED"/>
+    </board>
+  </boards>
+  <!-- examples section (optional for all Software Packs)-->
+
+  <examples>
+    <example name="Blinky" doc="Abstract.txt" folder="Examples\Blinky">
+      <description>Blinky example</description>
+      <board name="EVAL-ADuCM320EBZ" vendor="Analog Devices"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+    <example name="RTX_Blinky" doc="Abstract.txt" folder="Examples\RTX_Blinky">
+      <description>Simple RTX Kernel based example</description> 
+      <board name="EVAL-ADuCM320EBZ" vendor="Analog Devices" /> 
+      <project>
+        <environment name="uv" load="Blinky.uvprojx" /> 
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE" /> 
+        <component Cclass="Device" Cgroup="Startup" /> 
+        <category>Getting Started</category> 
+      </attributes>
+    </example>
+  </examples>
+  
+  <conditions>
+    <condition id="ADuCM320">
+      <description>ADuCM320  device</description>
+      <require Dvendor="Analog Devices:1"/>
+      <require Dname="ADuCM320"/>
+    </condition>
+    <condition id="ADuCM320 CMSIS Device">
+      <description>ADuCM320 CMSIS Device</description>
+      <require Cclass ="CMSIS" Cgroup="CORE" Csub=""/>
+      <require condition="ADuCM320"/>
+    </condition>
+    <condition id="ADuCM320 Library">
+      <description>Low Level Peripheral Libraries for ADuCM320</description>
+      <require condition="ADuCM320"/>
+    </condition>
+    <condition id="ADuCM320_ARM">
+      <description>ADuCM320  device</description>
+      <require condition="ADuCM320"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="ADuCM320_IAR">
+      <description>ADuCM320  device</description>
+      <require condition="ADuCM320"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+  </conditions> 
+  
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" Cvendor="Analog Devices" condition="ADuCM320 CMSIS Device">
+      <!-- Cversion is necessary -->
+      <description>System Startup for ADuCM320</description>
+
+      <files>
+        <!-- additional include path -->
+        <file category="include" name="Device\Include\"/>
+
+        <!-- startup files -->
+        <file category="source" name="Device\Source\ARM\startup_ADuCM320.s" version="0.3.0" attr="config" condition="ADuCM320_ARM"/>
+        <file category="source" name="Device\Source\IAR\startup_ADuCM320.s" version="0.2.0" attr="config" condition="ADuCM320_IAR"/>
+        
+        <!-- system files -->
+        <file category="source" name="Device\Source\system_ADuCM320.c" version="0.1.0" attr="config"      condition="ADuCM320" />
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Peripheral Libraries" Csub="ADC" Cversion="0.7.0" condition="ADuCM320 Library">
+      <description>ADC low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\AdcLib.h" version="0.4.0"/>
+        <file category="source" name="Library\AdcLib.c" version="0.7.0"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Peripheral Libraries" Csub="CMP" Cversion="0.2.0" condition="ADuCM320 Library">
+      <description>Comparator low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\CmpLib.h" version="0.1.0"/>
+        <file category="source" name="Library\CmpLib.c" version="0.2.0"/>
+      </files>
+    </component>
+	<component Cclass="Device" Cgroup="Peripheral Libraries" Csub="DAC" Cversion="0.2.0" condition="ADuCM320 Library">
+      <description>DAC low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\DacLib.h" version="0.2.0"/>
+        <file category="source" name="Library\DacLib.c" version="0.2.0"/>
+      </files>
+    </component>
+	<component Cclass="Device" Cgroup="Peripheral Libraries" Csub="DIO" Cversion="0.3.0" condition="ADuCM320 Library">
+      <description>Digital Input Output low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\DioLib.h" version="0.1.0"/>
+        <file category="source" name="Library\DioLib.c" version="0.3.0"/>
+      </files>
+    </component>
+	<component Cclass="Device" Cgroup="Peripheral Libraries" Csub="DMA" Cversion="0.4.0" condition="ADuCM320 Library">
+      <description>DMA low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\DmaLib.h" version="0.3.0"/>
+        <file category="source" name="Library\DmaLib.c" version="0.4.0"/>
+      </files>
+    </component>
+	<component Cclass="Device" Cgroup="Peripheral Libraries" Csub="FEE" Cversion="0.4.0" condition="ADuCM320 Library">
+      <description>Flash low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\FeeLib.h" version="0.4.0"/>
+        <file category="source" name="Library\FeeLib.c" version="0.4.0"/>
+      </files>
+    </component>
+	<component Cclass="Device" Cgroup="Peripheral Libraries" Csub="GPT" Cversion="0.3.0" condition="ADuCM320 Library">
+      <description>General Purpose Timer low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\GptLib.h" version="0.2.0"/>
+        <file category="source" name="Library\GptLib.c" version="0.3.0"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Peripheral Libraries" Csub="I2C" Cversion="0.1.0" condition="ADuCM320 Library">
+      <description>I2C low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\I2cLib.h" version="0.1.0"/>
+        <file category="source" name="Library\I2cLib.c" version="0.1.0"/>
+      </files>
+    </component>
+	<component Cclass="Device" Cgroup="Peripheral Libraries" Csub="IDAC" Cversion="0.1.0" condition="ADuCM320 Library">
+      <description>Idac low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\IDacLib.h" version="0.1.0"/>
+        <file category="source" name="Library\IDacLib.c" version="0.1.0"/>
+      </files>
+    </component>
+	<component Cclass="Device" Cgroup="Peripheral Libraries" Csub="INT" Cversion="0.1.0" condition="ADuCM320 Library">
+      <description>Interrupts low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\IntLib.h" version="0.1.0"/>
+        <file category="source" name="Library\IntLib.c" version="0.1.0"/>
+      </files>
+    </component>
+	<component Cclass="Device" Cgroup="Peripheral Libraries" Csub="MDIO" Cversion="0.1.0" condition="ADuCM320 Library">
+      <description>MDIO low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\MdLib.h" version="0.1.0"/>
+        <file category="source" name="Library\MdLib.c" version="0.1.0"/>
+      </files>
+    </component>
+	<component Cclass="Device" Cgroup="Peripheral Libraries" Csub="PWM" Cversion="0.3.0" condition="ADuCM320 Library">
+      <description>PWM low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\PwmLib.h" version="0.1.0"/>
+        <file category="source" name="Library\PwmLib.c" version="0.3.0"/>
+      </files>
+    </component>
+	<component Cclass="Device" Cgroup="Peripheral Libraries" Csub="SPI" Cversion="0.3.0" condition="ADuCM320 Library">
+      <description>SPI low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\SpiLib.h" version="0.2.0"/>
+        <file category="source" name="Library\SpiLib.c" version="0.3.0"/>
+      </files>
+    </component>
+	<component Cclass="Device" Cgroup="Peripheral Libraries" Csub="UART" Cversion="0.3.0" condition="ADuCM320 Library">
+      <description>UART low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\UrtLib.h" version="0.1.0"/>
+        <file category="source" name="Library\UrtLib.c" version="0.3.0"/>
+      </files>
+    </component>
+	<component Cclass="Device" Cgroup="Peripheral Libraries" Csub="WDT" Cversion="0.1.0" condition="ADuCM320 Library">
+      <description>Watchdog Timer low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\WdtLib.h" version="0.1.0"/>
+        <file category="source" name="Library\WdtLib.c" version="0.1.0"/>
+      </files>
+    </component>
+	<component Cclass="Device" Cgroup="Peripheral Libraries" Csub="WUT" Cversion="0.4.0" condition="ADuCM320 Library">
+      <description>Wake up Timer low level library for ADuCM320</description>
+      <files>
+        <file category="header" name="Library\WutLib.h" version="0.1.0"/>
+        <file category="source" name="Library\WutLib.c" version="0.4.0"/>
+      </files>
+    </component>
+  </components>
+</package>

@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>V2M-MPS2_CMx_BSP</name>
+  <description>ARM V2M-MPS2 Board Support PACK for Cortex-M System Design Kit Devices</description>
+
+  <releases>
+    <release version="1.1.0" date="2014-09-24">
+      Added Cortex-M7 Support/Examples.
+      Updated device families and conditions to match CMSIS pack version 4.2.0.
+      Added board description for "V2M-MPS2".
+    </release>
+    <release version="1.0.0">
+      First Release version of V2M-MPS2 Board Support Pack including Device definition.
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>ARM</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package ARM CMSDK</keyword>
+    <keyword>Board Support Package for V2M-MPS2</keyword>
+    <keyword>CMSDK_CM0</keyword>
+    <keyword>CMSDK_CM0P</keyword>
+    <keyword>CMSDK_CM3</keyword>
+    <keyword>CMSDK_CM4</keyword>
+    <keyword>CMSDK_CM7</keyword>
+  </keywords>
+
+  <devices>
+    <!-- ******************************  Cortex-M0  ****************************** -->
+    <family Dfamily="ARM Cortex M0" Dvendor="ARM:82">
+      <book    name="Documents\DUI0497A_cortex_m0_r0p0_generic_ug.pdf"           title="Cortex-M0 Generic User Guide"/>
+      <book    name="Documents\DDI0479C_cortex_m_system_design_kit_r1p0_trm.pdf" title="Cortex-M System Design Kit  Technical Reference Manual"/>
+      <description>
+Cortex-M System Design Kit
+  - Bit-Band Wrapper,
+  - System Control,
+  - GPIO, UART
+  - Dual Timer, 32-Bit Timer, Watchdog
+  - JTAG
+      </description>
+      <memory    id="IROM1"  start="0x00000000"  size="0x400000"  startup="1"  default="1"/>
+      <memory    id="IRAM1"  start="0x20000000"  size="0x400000"  init   ="0"  default="1"/>
+
+      <device Dname="CMSDK_CM0">
+        <processor Dcore="Cortex-M0" DcoreVersion="r0p0" Dfpu="NO_FPU" Dmpu="NO_MPU" Dendian="Little-endian" Dclock="25000000"/>
+        <compile header="Device\CMSDK_CM0\Include\CMSDK_CM0.h"  define="CMSDK_CM0"/>
+      </device>
+    </family>
+
+    <!-- ******************************  Cortex-M0P  ****************************** -->
+    <family Dfamily="ARM Cortex M0 plus" Dvendor="ARM:82">
+      <book    name="Documents\DUI0662B_cortex_m0p_r0p1_dgug.pdf"           title="Cortex-M0+ Generic User Guide"/>
+      <book    name="Documents\DDI0479C_cortex_m_system_design_kit_r1p0_trm.pdf" title="Cortex-M System Design Kit  Technical Reference Manual"/>
+      <description>
+Cortex-M System Design Kit
+  - Bit-Band Wrapper,
+  - System Control,
+  - GPIO, UART
+  - Dual Timer, 32-Bit Timer, Watchdog
+  - JTAG
+      </description>
+      <memory    id="IROM1"  start="0x00000000"  size="0x400000"  startup="1"  default="1"/>
+      <memory    id="IRAM1"  start="0x20000000"  size="0x400000"  init   ="0"  default="1"/>
+
+      <device Dname="CMSDK_CM0plus">
+        <processor Dcore="Cortex-M0+" DcoreVersion="r0p1" Dfpu="NO_FPU" Dmpu="NO_MPU" Dendian="Little-endian" Dclock="25000000"/>
+        <compile header="Device\CMSDK_CM0plus\Include\CMSDK_CM0plus.h"  define="CMSDK_CM0plus"/>
+      </device>
+    </family>
+
+    <!-- ******************************  Cortex-M3  ****************************** -->
+    <family Dfamily="ARM Cortex M3" Dvendor="ARM:82">
+      <book    name="Documents\DUI0552A_cortex_m3_dgug.pdf"           title="Cortex-M3 Generic User Guide"/>
+      <book    name="Documents\DDI0479C_cortex_m_system_design_kit_r1p0_trm.pdf" title="Cortex-M System Design Kit  Technical Reference Manual"/>
+      <description>
+Cortex-M System Design Kit
+  - Bit-Band Wrapper,
+  - System Control,
+  - GPIO, UART
+  - Dual Timer, 32-Bit Timer, Watchdog
+  - JTAG
+      </description>
+      <memory    id="IROM1"  start="0x00000000"  size="0x400000"  startup="1"  default="1"/>
+      <memory    id="IRAM1"  start="0x20000000"  size="0x400000"  init   ="0"  default="1"/>
+
+      <device Dname="CMSDK_CM3">
+        <processor Dcore="Cortex-M3" DcoreVersion="r2p1" Dfpu="0" Dmpu="MPU" Dendian="Little-endian" Dclock="25000000"/>
+        <compile header="Device\CMSDK_CM3\Include\CMSDK_CM3.h"  define="CMSDK_CM3"/>
+      </device>
+    </family>
+
+    <!-- ******************************  Cortex-M4  ****************************** -->
+    <family Dfamily="ARM Cortex M4" Dvendor="ARM:82">
+      <book    name="Documents\DUI0553A_cortex_m4_dgug.pdf"           title="Cortex-M4 Generic User Guide"/>
+      <book    name="Documents\DDI0479C_cortex_m_system_design_kit_r1p0_trm.pdf" title="Cortex-M System Design Kit  Technical Reference Manual"/>
+      <description>
+Cortex-M System Design Kit
+  - Bit-Band Wrapper,
+  - System Control,
+  - GPIO, UART
+  - Dual Timer, 32-Bit Timer, Watchdog
+  - JTAG
+      </description>
+      <memory    id="IROM1"  start="0x00000000"  size="0x400000"  startup="1"  default="1"/>
+      <memory    id="IRAM1"  start="0x20000000"  size="0x400000"  init   ="0"  default="1"/>
+
+      <device Dname="CMSDK_CM4">
+        <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="NO_FPU" Dmpu="MPU" Dendian="Little-endian" Dclock="25000000"/>
+        <compile   header="Device\CMSDK_CM4\Include\CMSDK_CM4.h"    define="CMSDK_CM4"/>
+      </device>
+
+      <device Dname="CMSDK_CM4_FP">
+        <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="FPU"    Dmpu="MPU" Dendian="Little-endian" Dclock="25000000"/>
+        <compile   header="Device\CMSDK_CM4\Include\CMSDK_CM4_FP.h" define="CMSDK_CM4_FP"/>
+      </device>
+    </family>
+
+    <!-- ******************************  Cortex-M7  ****************************** -->
+    <family Dfamily="ARM Cortex M7" Dvendor="ARM:82">
+      <!--book    name="Documents\DUI0553A_cortex_m4_dgug.pdf"           title="Cortex-M4 Generic User Guide"/-->
+      <!--book    name="Documents\DDI0479C_cortex_m_system_design_kit_r1p0_trm.pdf" title="Cortex-M System Design Kit  Technical Reference Manual"/-->
+      <description>
+Cortex-M System Design Kit
+  - Bit-Band Wrapper,
+  - System Control,
+  - GPIO, UART
+  - Dual Timer, 32-Bit Timer, Watchdog
+  - JTAG
+      </description>
+      <memory    id="IROM1"  start="0x00000000"  size="0x400000"  startup="1"  default="1"/>
+      <memory    id="IRAM1"  start="0x20000000"  size="0x400000"  init   ="0"  default="1"/>
+
+      <device Dname="CMSDK_CM7">
+        <processor Dcore="Cortex-M7" DcoreVersion="r0p0" Dfpu="NO_FPU" Dmpu="MPU" Dendian="Little-endian" Dclock="25000000"/>
+        <compile   header="Device\CMSDK_CM7\Include\CMSDK_CM7.h"       define="CMSDK_CM7"/>
+      </device>
+
+      <device Dname="CMSDK_CM7_SP">
+        <processor Dcore="Cortex-M7" DcoreVersion="r0p0" Dfpu="SP_FPU" Dmpu="MPU" Dendian="Little-endian" Dclock="25000000"/>
+        <compile   header="Device\CMSDK_CM7\Include\CMSDK_CM7_SP.h"    define="CMSDK_CM7_SP"/>
+      </device>
+
+      <device Dname="CMSDK_CM7_DP">
+        <processor Dcore="Cortex-M7" DcoreVersion="r0p0" Dfpu="DP_FPU" Dmpu="MPU" Dendian="Little-endian" Dclock="25000000"/>
+        <compile   header="Device\CMSDK_CM7\Include\CMSDK_CM7_DP.h"    define="CMSDK_CM7_DP"/>
+      </device>
+    </family>
+
+  </devices>
+
+  <conditions>
+    <!-- conditions are dependecy rules that can apply to a component or an individual file -->
+    <condition id="ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <condition id="CMSDK_CM0 CMSIS Device">
+      <description>ARM CMSDK_M0 Device and CMSIS Core</description>
+      <require Dvendor="ARM:82" Dname="CMSDK_CM0"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="CMSDK_CM0plus CMSIS Device">
+      <description>ARM CMSDK_M0plus Device and CMSIS Core</description>
+      <require Dvendor="ARM:82" Dname="CMSDK_CM0plus"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="CMSDK_CM3 CMSIS Device">
+      <description>ARM CMSDK_M3 Device and CMSIS Core</description>
+      <require Dvendor="ARM:82" Dname="CMSDK_CM3"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="CMSDK_CM4 CMSIS Device">
+      <description>ARM CMSDK_M4 Device and CMSIS Core</description>
+      <require Dvendor="ARM:82" Dname="CMSDK_CM4*"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="CMSDK_CM7 CMSIS Device">
+      <description>ARM CMSDK_M7 Device and CMSIS Core</description>
+      <require Dvendor="ARM:82" Dname="CMSDK_CM7*"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="CMSDK CMSIS Device">
+      <description>ARM Cortex-M System Design Kit Device</description>
+      <accept  condition="CMSDK_CM0 CMSIS Device"/>
+      <accept  condition="CMSDK_CM0plus CMSIS Device"/>
+      <accept  condition="CMSDK_CM3 CMSIS Device"/>
+      <accept  condition="CMSDK_CM4 CMSIS Device"/>
+      <accept  condition="CMSDK_CM7 CMSIS Device"/>
+    </condition>
+
+    <condition id="V2M-MPS2 Common">
+      <description>V2M-MPS2 Common Include files</description>
+      <require condition="CMSDK CMSIS Device"/>
+      <require Cclass="Board Support" Cgroup="V2M-MPS2" Csub="Common"/>
+    </condition>
+
+  </conditions>
+
+  <components>
+    <!-- CMSIS-Startup components -->
+    <!-- CMSDK_M0 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="CMSDK_CM0 CMSIS Device">
+      <description>System and Startup for ARM CMSDK_CM0 device</description>
+      <files>
+        <!-- header file (and device include path) -->
+        <file category="header" name="Device\CMSDK_CM0\Include\CMSDK_CM0.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device\CMSDK_CM0\Source\ARM\startup_CMSDK_CM0.s"         attr="config" version="1.0.0" condition="ARMCC"/>
+        <file category="source" name="Device\CMSDK_CM0\Source\system_CMSDK_CM0.c"              attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- CMSDK_M0+ -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="CMSDK_CM0plus CMSIS Device">
+      <description>System and Startup for ARM CMSDK_CM0plus device</description>
+      <files>
+        <!-- header file (and device include path) -->
+        <file category="header" name="Device\CMSDK_CM0plus\Include\CMSDK_CM0plus.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device\CMSDK_CM0plus\Source\ARM\startup_CMSDK_CM0plus.s" attr="config" version="1.0.0" condition="ARMCC"/>
+        <file category="source" name="Device\CMSDK_CM0plus\Source\system_CMSDK_CM0plus.c"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- CMSDK_M3 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="CMSDK_CM3 CMSIS Device">
+      <description>System and Startup for ARM CMSDK_CM3 device</description>
+      <files>
+        <!-- header file (and device include path) -->
+        <file category="header" name="Device\CMSDK_CM3\Include\CMSDK_CM3.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device\CMSDK_CM3\Source\ARM\startup_CMSDK_CM3.s"         attr="config" version="1.0.0" condition="ARMCC"/>
+        <file category="source" name="Device\CMSDK_CM3\Source\system_CMSDK_CM3.c"              attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- CMSDK_M4 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="CMSDK_CM4 CMSIS Device">
+      <description>System and Startup for ARM CMSDK_CM4 device</description>
+      <files>
+        <!-- header file (and device include path) -->
+        <file category="include" name="Device\CMSDK_CM4\Include\"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device\CMSDK_CM4\Source\ARM\startup_CMSDK_CM4.s"         attr="config" version="1.0.0" condition="ARMCC"/>
+        <file category="source" name="Device\CMSDK_CM4\Source\system_CMSDK_CM4.c"              attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- CMSDK_M7 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="CMSDK_CM7 CMSIS Device">
+      <description>System and Startup for ARM CMSDK_CM7 device</description>
+      <files>
+        <!-- header file (and device include path) -->
+        <file category="include" name="Device\CMSDK_CM7\Include\"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device\CMSDK_CM7\Source\ARM\startup_CMSDK_CM7.s"         attr="config" version="1.0.0" condition="ARMCC"/>
+        <file category="source" name="Device\CMSDK_CM7\Source\system_CMSDK_CM7.c"              attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!--  V2M-MPS2 Board support  -->
+    <component Cclass="Board Support" Cgroup="V2M-MPS2" Csub="Common" Cversion="1.0.0" condition="CMSDK CMSIS Device">
+      <description>Common Include files for ARM V2M_MPS2 Development Board</description>
+      <files>
+        <file category="header" name="Boards\ARM\V2M-MPS2\Common\Device.h"/>
+        <file category="header" name="Boards\ARM\V2M-MPS2\Common\SMM_MPS2.h"/>
+      </files>
+    </component>
+
+    <component Cclass="Board Support" Cgroup="V2M-MPS2" Csub="Graphic LCD" Cversion="1.0.0" condition="V2M-MPS2 Common">
+      <description>Graphic LCD driver for ARM V2M_MPS2 Development Board</description>
+      <files>
+        <file category="header" name="Boards\ARM\V2M-MPS2\Common\Font_6x8_h.h"/>
+        <file category="header" name="Boards\ARM\V2M-MPS2\Common\Font_16x24_h.h"/>
+        <file category="header" name="Boards\ARM\V2M-MPS2\Common\GLCD.h"/>
+        <file category="source" name="Boards\ARM\V2M-MPS2\Common\GLCD_SPI_MPS2.c"/>
+      </files>
+    </component>
+    <component Cclass="Board Support" Cgroup="V2M-MPS2" Csub="Touchscreen" Cversion="1.0.0" condition="V2M-MPS2 Common">
+      <description>Touchscreen driver for ARM V2M_MPS2 Development Board</description>
+      <files>
+        <file category="header" name="Boards\ARM\V2M-MPS2\Common\Touch.h"/>
+        <file category="source" name="Boards\ARM\V2M-MPS2\Common\Touch_I2C_MPS2.c"/>
+      </files>
+    </component>
+    <component Cclass="Board Support" Cgroup="V2M-MPS2" Csub="Keyboard" Cversion="1.0.0" condition="V2M-MPS2 Common">
+      <description>Keyboard driver for ARM V2M-MPS2 Development Board</description>
+      <files>
+        <file category="header" name="Boards\ARM\V2M-MPS2\Common\Keyboard.h"/>
+        <file category="source" name="Boards\ARM\V2M-MPS2\Common\Keyboard.c"/>
+      </files>
+    </component>
+    <component Cclass="Board Support" Cgroup="V2M-MPS2" Csub="LED" Cversion="1.0.0" condition="V2M-MPS2 Common">
+      <description>LED driver for ARM V2M-MPS2 Development Board</description>
+      <files>
+        <file category="header" name="Boards\ARM\V2M-MPS2\Common\LED.h"/>
+        <file category="source" name="Boards\ARM\V2M-MPS2\Common\LED.c"/>
+      </files>
+    </component>
+    <component Cclass="Board Support" Cgroup="V2M-MPS2" Csub="Serial" Cversion="1.0.0" condition="V2M-MPS2 Common">
+      <description>Serial driver for ARM V2M-MPS2 Development Board</description>
+      <files>
+        <file category="header" name="Boards\ARM\V2M-MPS2\Common\Serial.h"/>
+        <file category="source" name="Boards\ARM\V2M-MPS2\Common\Serial.c"/>
+        <file category="source" name="Boards\ARM\V2M-MPS2\Common\Retarget.c"/>
+      </files>
+    </component>
+
+  </components>
+
+  <boards>
+    <board name="V2M-MPS2" vendor="ARM" revision="B" salesContact="sales.intl@keil.com" orderForm="http://www.keil.com/product/prices.asp">
+      <description>ARM Versatile Express Cortex-M Prototyping System Board</description>
+      <image small="Images\V2M-MPS2_revB_colour_thumb.png" large="Images\V2M-MPS2_revB_colour_medium.png"/>
+      <book category="overview"  name="http://www.arm.com/products/tools/development-boards/versatile-express/cortex-m-prototyping-system.php" title="Cortex-M Prototyping System"/>
+      <mountedDevice    deviceIndex="0" Dvendor="ARM:82" Dname="CMSDK_CM7"/>
+      <compatibleDevice deviceIndex="0" Dvendor="ARM:82" Dname="CMSDK_CM7_SP"/>
+      <compatibleDevice deviceIndex="0" Dvendor="ARM:82" Dname="CMSDK_CM7_DP"/>
+      <compatibleDevice deviceIndex="0" Dvendor="ARM:82" Dname="CMSDK_CM4"/>
+      <compatibleDevice deviceIndex="0" Dvendor="ARM:82" Dname="CMSDK_CM4_FP"/>
+      <compatibleDevice deviceIndex="0" Dvendor="ARM:82" Dname="CMSDK_CM0"/>
+      <compatibleDevice deviceIndex="0" Dvendor="ARM:82" Dname="CMSDK_CM0plus"/>
+      <compatibleDevice deviceIndex="0" Dvendor="ARM:82" Dname="CMSDK_CM3"/>
+      <feature type="XTAL"      n="50000000"/>
+      <feature type="PWR"       n="12"             name="12V DC power jack"/>
+      <feature type="Batt"      n="1"              name="3V battery"/>
+      <feature type="Button"    n="4"              name="Push-buttons: 2 FPGA User, Hardware RESET, ON/OFF soft RESET"/>
+      <feature type="ContOther" n="8"              name="Switches: 8 MCC User switches"/>
+      <feature type="USB"       n="1"              name="USB 2.0 configuration port"/>
+      <feature type="RS232"     n="1"              name="General purpose UART Connector"/>
+      <feature type="SPI"       n="1"              name="SPI Header"/>
+      <feature type="Other"     n="1"              name="VGA Connector"/>
+      <feature type="GLCD"      n="1"  m="240.320" name="2.4 inch QVGA Touchscreen Display"/>
+	  <feature type="LineIn"    n="1"              name="Stereo line audio IN"/>
+	  <feature type="LineOut"   n="1"              name="Stereo line audio OUT"/>
+      <feature type="ETH"       n="1" m="10000000" name="RJ45 Ethernet Connector"/>
+      <feature type="ConnOther" n="1"              name="ARM JTAG 20 Interface"/>
+      <feature type="ConnOther" n="1"              name="Cortex Debug (20 Pin) Interface"/>
+      <feature type="ConnOther" n="1"              name="Cortex Debug (10 Pin) Interface"/>
+      <feature type="ConnOther" n="1"              name="MICTOR 38 Interface"/>
+
+      <debugInterface adapter="JTAG/SW"   connector="20 pin JTAG (0.1 inch connector)"/>
+      <debugInterface adapter="JTAG/SW"   connector="20 pin Cortex debug (0.05 inch connector)"/>
+      <debugInterface adapter="JTAG/SW"   connector="10 pin Cortex debug (0.05 inch connector)"/>
+    </board>
+  </boards>
+
+  <examples>
+    <!--  V2M-MPS2 Board CMSDK_M0 Examples  -->
+    <example name="CMSIS RTOS Blinky -CMSDK_CM0" doc="Abstract.txt" folder="Boards\ARM\V2M-MPS2\CMSDK_CM0\RTX_Blinky">
+      <description>CMSIS RTOS based Blinky example</description>
+      <board name="V2M-MPS2" vendor="ARM"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+    <example name="Blinky -CMSDK_CM0" doc="Abstract.txt" folder="Boards\ARM\V2M-MPS2\CMSDK_CM0\Blinky">
+      <description>Blinky example</description>
+      <board name="V2M-MPS2" vendor="ARM"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+	
+    <!--  V2M-MPS2 Board CMSDK_M0plus Examples  -->
+    <example name="CMSIS RTOS Blinky -CMSDK_CM0Plus" doc="Abstract.txt" folder="Boards\ARM\V2M-MPS2\CMSDK_CM0plus\RTX_Blinky">
+      <description>CMSIS RTOS based Blinky example</description>
+      <board name="V2M-MPS2" vendor="ARM"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+    <example name="Blinky -CMSDK_CM0plus" doc="Abstract.txt" folder="Boards\ARM\V2M-MPS2\CMSDK_CM0plus\Blinky">
+      <description>Blinky example</description>
+      <board name="V2M-MPS2" vendor="ARM"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <!--  V2M-MPS2 Board CMSDK_M3 Examples  -->
+    <example name="CMSIS RTOS Blinky -CMSDK_CM3" doc="Abstract.txt" folder="Boards\ARM\V2M-MPS2\CMSDK_CM3\RTX_Blinky">
+      <description>CMSIS RTOS based Blinky example</description>
+      <board name="V2M-MPS2" vendor="ARM"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+    <example name="Blinky -CMSDK_CM3" doc="Abstract.txt" folder="Boards\ARM\V2M-MPS2\CMSDK_CM3\Blinky">
+      <description>Blinky example</description>
+      <board name="V2M-MPS2" vendor="ARM"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <!--  V2M-MPS2 Board CMSDK_M4_FP Examples  -->
+    <example name="CMSIS RTOS Blinky -CMSDK_CM4_FP" doc="Abstract.txt" folder="Boards\ARM\V2M-MPS2\CMSDK_CM4_FP\RTX_Blinky">
+      <description>CMSIS RTOS based Blinky example</description>
+      <board name="V2M-MPS2" vendor="ARM"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+    <example name="Blinky -CMSDK_CM4_FP" doc="Abstract.txt" folder="Boards\ARM\V2M-MPS2\CMSDK_CM4_FP\Blinky">
+      <description>Blinky example</description>
+      <board name="V2M-MPS2" vendor="ARM"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>	
+
+    <!--  V2M-MPS2 Board CMSDK_CM7_SP Examples  -->
+    <example name="CMSIS RTOS Blinky -CMSDK_CM7_SP" doc="Abstract.txt" folder="Boards\ARM\V2M-MPS2\CMSDK_CM7_SP\RTX_Blinky">
+      <description>CMSIS RTOS based Blinky example</description>
+      <board name="V2M-MPS2" vendor="ARM"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+    <example name="Blinky -CMSDK_CM7_SP" doc="Abstract.txt" folder="Boards\ARM\V2M-MPS2\CMSDK_CM7_SP\Blinky">
+      <description>Blinky example</description>
+      <board name="V2M-MPS2" vendor="ARM"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>	
+	
+  </examples>
+
+</package>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;kittchen_remote_L0 Configuration/Application/TrueSTUDIO/startup_stm32l051xx.s&apos; to &apos;startup_stm32l051xx.S&apos;" description="Rename resource &apos;startup_stm32l051xx.s&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Application/TrueSTUDIO/startup_stm32l051xx.s" name="startup_stm32l051xx.S" stamp="1421739910217" updateReferences="true"/>
+</session>

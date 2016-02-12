@@ -1,0 +1,52 @@
+Marked,Time,Serial Bus,MOSI,MISO
+,-10.67ms,Serial1,1,0
+,-8.760ms,Serial1,36,0F
+,-8.650ms,Serial1,,
+,-8.613ms,Serial1,30,0F
+,-8.464ms,Serial1,02 06,0F 0F
+,-8.284ms,Serial1,03 07,0F 0F
+,-8.106ms,Serial1,04 D3,0F 0F
+,-7.926ms,Serial1,05 91,0F 0F
+,-7.746ms,Serial1,0B 09,0F 0F
+,-7.568ms,Serial1,0C 00,0F 0F
+,-7.388ms,Serial1,0D 5D,0F 0F
+,-7.208ms,Serial1,0E 93,0F 0F
+,-7.028ms,Serial1,0F B1,0F 0F
+,-6.849ms,Serial1,10 2D,0F 0F
+,-6.669ms,Serial1,11 3B,0F 0F
+,-6.490ms,Serial1,12 73,0F 0F
+,-6.310ms,Serial1,13 A2,0F 0F
+,-6.131ms,Serial1,14 F8,0F 0F
+,-5.951ms,Serial1,0A 10,0F 0F
+,-5.772ms,Serial1,15 01,0F 0F
+,-5.593ms,Serial1,21 B6,0F 0F
+,-5.413ms,Serial1,22 10,0F 0F
+,-5.234ms,Serial1,16 07,0F 0F
+,-5.054ms,Serial1,17 30,0F 0F
+,-4.874ms,Serial1,18 18,0F 0F
+,-4.695ms,Serial1,19 1D,0F 0F
+,-4.515ms,Serial1,1A 1C,0F 0F
+,-4.336ms,Serial1,1B C7,0F 0F
+,-4.157ms,Serial1,1C 00,0F 0F
+,-3.978ms,Serial1,1D B2,0F 0F
+,-3.798ms,Serial1,23 EA,0F 0F
+,-3.619ms,Serial1,24 0A,0F 0F
+,-3.440ms,Serial1,25 00,0F 0F
+,-3.261ms,Serial1,26 11,0F 0F
+,-3.081ms,Serial1,27 41,0F 0F
+,-2.903ms,Serial1,28 00,0F 0F
+,-2.723ms,Serial1,1E 87,0F 0F
+,-2.543ms,Serial1,1F 6B,0F 0F
+,-2.364ms,Serial1,20 F8,0F 0F
+,-2.184ms,Serial1,29 59,0F 0F
+,-2.005ms,Serial1,2C 88,0F 0F
+,-1.825ms,Serial1,2D 31,0F 0F
+,-1.646ms,Serial1,2E 0B,0F 0F
+,-1.468ms,Serial1,00 29,0F 0F
+,-1.289ms,Serial1,02 06,0F 0F
+,-1.111ms,Serial1,07 04,0F 0F
+,-932.1us,Serial1,08 05,0F 0F
+,-753.6us,Serial1,09 01,0F 0F
+,-577.1us,Serial1,06 FF,0F 0F
+,-399.6us,Serial1,93 FF,00 A2
+,-215.1us,Serial1,7E FF FE BB A9 7F 6E 97 C5,0F 0F 0F 0F 0F 0F 0F 0F 0F

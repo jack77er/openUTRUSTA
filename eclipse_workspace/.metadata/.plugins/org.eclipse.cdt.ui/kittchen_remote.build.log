@@ -1,0 +1,11 @@
+15:55:45 **** Incremental Build of configuration Debug for project kittchen_remote ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "kittchen_remote.elf"
+   text	   data	    bss	    dec	    hex	filename
+  10900	    124	   1148	  12172	   2f8c	kittchen_remote.elf
+Finished building: kittchen_remote.siz
+ 
+
+15:55:45 Build Finished (took 640ms)
+

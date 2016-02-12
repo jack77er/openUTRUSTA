@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>Kinetis_KExx_DFP</name>
+  <description>Freescale Kinetis KExx Series Device Support</description>
+
+  <releases>
+    <release version="1.2.0" date="2014-07-29">
+      Added Boards FRDM-KE04Z, FRDM-KE06Z.
+      Added examples for FRDM-KE06Z.
+    </release>
+    <release version="1.1.0" date="2014-06-12">
+      Updated SVD files
+    </release>
+    <release version="1.0.0">
+      First Release version of KExx Device Family Pack.
+    </release>
+  </releases>
+
+  <keywords>
+  <!-- keywords for indexing -->
+    <keyword>Freescale</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package Freescale</keyword>
+    <keyword>KExx</keyword>
+  </keywords>
+
+  <devices>
+    <!-- generated, do not modify this section! -->
+
+    <family Dfamily="KExx Series" Dvendor="Freescale:78">
+      <processor Dcore="Cortex-M0+" DcoreVersion="r0p0"/>
+      <book    name="Documents\dui0662a_cortex_m0p_r0p0_dgug.pdf"     title="Cortex-M0+ Generic User Guide"/>
+
+      <!-- ******************************  KE02  ****************************** -->
+      <subFamily DsubFamily="KE02">
+      
+      <!-- ******************************  MKE02Z16xxx2  ****************************** -->
+      <device Dname="MKE02Z16xxx2">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="20000000"/>
+        <compile header="Device\Include\MKE02Z2.h"  define="MKE02Z16xxx2"/>
+        <debug      svd="SVD\MKE02Z2.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x4000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0600"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFFE00"  size="0x0200"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MKE02Zxxx_P16KB.FLM" start="0x00000000" size="0x4000"  RAMstart="0x1FFFFE00"  RAMsize="0x0800"  default="1"/>
+        <algorithm  name="Flash\MKE02Zxxx_EE256B.FLM" start="0x10000000" size="0x0100"  RAMstart="0x1FFFFE00"  RAMsize="0x0800"  default="1"/>
+        <book       name="Documents\MKE02Z64M20SF0RM.pdf"                  title="MKE02Z16xxx2 Device Reference Manual"/>
+        <book       name="Documents\MKE02P64M20SF0.pdf"                    title="MKE02Z16xxx2 Device Data Sheet"/>
+        <description>
+ARM Cortex-M0+ running at up to 20 MHz
+  Operating Characteristics
+  - Voltage range: 2.7 to 5.5 V
+  - Flash write voltage range: 2.7 to 5.5 V
+  - Temperature range (ambient): -40 to 105B0C
+  - Up to 20 MHz ARMB. Cortex-M0+ core
+  Memories and memory interfaces
+  - Up to 64 KB flash
+  - Up to 256 B EEPROM
+  - Up to 4 KB RAM
+  Clocks
+  - 31.25 kHz to 39.0625 kHz oscillator
+  - 4 MHz to 20 MHz oscillator
+  System peripherals
+  - One low-power stop mode, one wait mode
+  - Low-voltage detection
+  - Watchdog with independent clock source
+  - Programmable CRC
+  - Serial wire debug interface (SWD)
+  - Bit Manipulation Engine (BME)
+  Security and integrity modules
+  - 64-bit unique identification (ID) number per chip
+  Human-machine interface
+  - General-purpose input/output (GPIO)
+  - Two 8-bit keyboard interrupt modules (KBI)
+  Analog modules
+  - One 16-channel 12-bit SAR ADC
+  - Two analog comparator containing a 6-bit DAC
+  Timers
+  - One 6-channel FlexTimer/PWM (FTM)
+  - Two 2-channel FlexTimer/PWM (FTM)
+  - One 2-channel periodic interrupt timer (PIT)
+  - One Real-time clock (RTC)
+  Communication interfaces
+  - Two 8-bit SPI modules (SPI)
+  - Three SCI/UART modules (SCI)
+  - One I2C module (I2C)
+  Package options
+  - 64-pin QFP/LQFP
+  - 44-pin LQFP
+  - 32-pin LQFP
+        </description>
+      </device>
+      
+      <!-- ******************************  MKE02Z32xxx2  ****************************** -->
+      <device Dname="MKE02Z32xxx2">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="20000000"/>
+        <compile header="Device\Include\MKE02Z2.h"  define="MKE02Z32xxx2"/>
+        <debug      svd="SVD\MKE02Z2.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0C00"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFFC00"  size="0x0400"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MKE02Zxxx_P32KB.FLM" start="0x00000000" size="0x8000"  RAMstart="0x1FFFFC00"  RAMsize="0x1000"  default="1"/>
+        <algorithm  name="Flash\MKE02Zxxx_EE256B.FLM" start="0x10000000" size="0x0100"  RAMstart="0x1FFFFC00"  RAMsize="0x1000"  default="1"/>
+        <book       name="Documents\MKE02Z64M20SF0RM.pdf"                  title="MKE02Z32xxx2 Device Reference Manual"/>
+        <book       name="Documents\MKE02P64M20SF0.pdf"                    title="MKE02Z32xxx2 Device Data Sheet"/>
+        <description>
+ARM Cortex-M0+ running at up to 20 MHz
+  Operating Characteristics
+  - Voltage range: 2.7 to 5.5 V
+  - Flash write voltage range: 2.7 to 5.5 V
+  - Temperature range (ambient): -40 to 105B0C
+  - Up to 20 MHz ARMB. Cortex-M0+ core
+  Memories and memory interfaces
+  - Up to 64 KB flash
+  - Up to 256 B EEPROM
+  - Up to 4 KB RAM
+  Clocks
+  - 31.25 kHz to 39.0625 kHz oscillator
+  - 4 MHz to 20 MHz oscillator
+  System peripherals
+  - One low-power stop mode, one wait mode
+  - Low-voltage detection
+  - Watchdog with independent clock source
+  - Programmable CRC
+  - Serial wire debug interface (SWD)
+  - Bit Manipulation Engine (BME)
+  Security and integrity modules
+  - 64-bit unique identification (ID) number per chip
+  Human-machine interface
+  - General-purpose input/output (GPIO)
+  - Two 8-bit keyboard interrupt modules (KBI)
+  Analog modules
+  - One 16-channel 12-bit SAR ADC
+  - Two analog comparator containing a 6-bit DAC
+  Timers
+  - One 6-channel FlexTimer/PWM (FTM)
+  - Two 2-channel FlexTimer/PWM (FTM)
+  - One 2-channel periodic interrupt timer (PIT)
+  - One Real-time clock (RTC)
+  Communication interfaces
+  - Two 8-bit SPI modules (SPI)
+  - Three SCI/UART modules (SCI)
+  - One I2C module (I2C)
+  Package options
+  - 64-pin QFP/LQFP
+  - 44-pin LQFP
+  - 32-pin LQFP
+        </description>
+      </device>
+      
+      <!-- ******************************  MKE02Z64xxx2  ****************************** -->
+      <device Dname="MKE02Z64xxx2">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="20000000"/>
+        <compile header="Device\Include\MKE02Z2.h"  define="MKE02Z64xxx2"/>
+        <debug      svd="SVD\MKE02Z2.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0C00"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFFC00"  size="0x0400"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MKE02Zxxx_P64KB.FLM" start="0x00000000" size="0x10000"  RAMstart="0x1FFFFC00"  RAMsize="0x1000"  default="1"/>
+        <algorithm  name="Flash\MKE02Zxxx_EE256B.FLM" start="0x10000000" size="0x0100"  RAMstart="0x1FFFFC00"  RAMsize="0x1000"  default="1"/>
+        <book       name="Documents\MKE02Z64M20SF0RM.pdf"                  title="MKE02Z64xxx2 Device Reference Manual"/>
+        <book       name="Documents\MKE02P64M20SF0.pdf"                    title="MKE02Z64xxx2 Device Data Sheet"/>
+        <description>
+ARM Cortex-M0+ running at up to 20 MHz
+  Memories and memory interfaces
+  - Up to 64 KB flash
+  - Up to 256 B EEPROM
+  - Up to 4 KB RAM
+  Clocks
+  - 31.25 kHz to 39.0625 kHz oscillator
+  - 4 MHz to 20 MHz oscillator
+  System peripherals
+  - One low-power stop mode, one wait mode
+  - Low-voltage detection
+  - Watchdog with independent clock source
+  - Programmable CRC
+  - Serial wire debug interface (SWD)
+  - Bit Manipulation Engine (BME)
+  Security and integrity modules
+  - 64-bit unique identification (ID) number per chip
+  Human-machine interface
+  - General-purpose input/output (GPIO)
+  - Two 8-bit keyboard interrupt modules (KBI)
+  Analog modules
+  - One 16-channel 12-bit SAR ADC
+  - Two analog comparator containing a 6-bit DAC
+  Timers
+  - One 6-channel FlexTimer/PWM (FTM)
+  - Two 2-channel FlexTimer/PWM (FTM)
+  - One 2-channel periodic interrupt timer (PIT)
+  - One Real-time clock (RTC)
+  Communication interfaces
+  - Two 8-bit SPI modules (SPI)
+  - Three SCI/UART modules (SCI)
+  - One I2C module (I2C)
+  Package options
+  - 64-pin QFP/LQFP
+  - 44-pin LQFP
+  - 32-pin LQFP
+        </description>
+      </device>
+      <!-- ******************************  MKE02Z64xxx4  ****************************** -->
+      <device Dname="MKE02Z64xxx4">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="40000000"/>
+        <compile header="Device\Include\MKE02Z4.h"  define="MKE02Z64xxx4"/>
+        <debug      svd="SVD\MKE02Z4.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0C00"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFFC00"  size="0x0400"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MKE02Zxxx_P64KB.FLM" start="0x00000000" size="0x10000"  RAMstart="0x1FFFFC00"  RAMsize="0x1000"  default="1"/>
+        <algorithm  name="Flash\MKE02Zxxx_EE256B.FLM" start="0x10000000" size="0x0100"  RAMstart="0x1FFFFC00"  RAMsize="0x1000"  default="1"/>
+        <description>
+ARM Cortex-M0+ running at up to 40 MHz
+  Memories and memory interfaces
+  - Up to 64 KB flash
+  - Up to 256 B EEPROM
+  - Up to 4 KB RAM
+  - Internal 1 kHz low-power oscillator (LPO)
+  Clocks
+  - 31.25 kHz to 39.0625 kHz oscillator
+  - 4 MHz to 20 MHz oscillator
+  System peripherals
+  – Power management module (PMC) : Run, Wait, Stop modes
+  – Low-voltage detection (LVD)
+  – Watchdog with independent clock source
+  – Programmable cyclic redundancy check module
+  – Serial wire debug interface (SWD)
+  – Bit manipulation engine (BME)  
+  Security and integrity modules
+  - 64-bit unique identification (ID) number per chip
+  Human-machine interface
+  – Up to 57 general-purpose input/output (GPIO)
+  – Two 8-bit keyboard interrupt modules (KBI)
+  – External interrupt (IRQ)  
+  Analog modules
+  – One 16-channel 12-bit SAR ADC
+  – Two analog comparators
+  Timers
+  - One 6-channel FlexTimer/PWM (FTM)
+  - Two 2-channel FlexTimer/PWM (FTM)
+  - One 2-channel periodic interrupt timer (PIT)
+  - One Real-time clock (RTC)
+  Communication interfaces
+  - Two 8-bit SPI modules (SPI)
+  - Three SCI/UART modules (SCI)
+  - One I2C module (I2C)
+  Package options
+  - 64-pin QFP/LQFP
+  - 44-pin LQFP
+  - 32-pin LQFP
+        </description>
+      </device>
+      <!-- ******************************  MKE02Z32xxx4  ****************************** -->
+      <device Dname="MKE02Z32xxx4">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="40000000"/>
+        <compile header="Device\Include\MKE02Z4.h"  define="MKE02Z32xxx4"/>
+        <debug      svd="SVD\MKE02Z4.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0C00"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFFC00"  size="0x0400"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MKE02Zxxx_P32KB.FLM" start="0x00000000" size="0x8000"  RAMstart="0x1FFFFC00"  RAMsize="0x1000"  default="1"/>
+        <algorithm  name="Flash\MKE02Zxxx_EE256B.FLM" start="0x10000000" size="0x0100"  RAMstart="0x1FFFFC00"  RAMsize="0x1000"  default="1"/>
+        <description>
+ARM Cortex-M0+ running at up to 40 MHz
+  Memories and memory interfaces
+  - Up to 64 KB flash
+  - Up to 256 B EEPROM
+  - Up to 4 KB RAM
+  - Internal 1 kHz low-power oscillator (LPO)
+  Clocks
+  - 31.25 kHz to 39.0625 kHz oscillator
+  - 4 MHz to 20 MHz oscillator
+  System peripherals
+  – Power management module (PMC) : Run, Wait, Stop modes
+  – Low-voltage detection (LVD)
+  – Watchdog with independent clock source
+  – Programmable cyclic redundancy check module
+  – Serial wire debug interface (SWD)
+  – Bit manipulation engine (BME)  
+  Security and integrity modules
+  - 64-bit unique identification (ID) number per chip
+  Human-machine interface
+  – Up to 57 general-purpose input/output (GPIO)
+  – Two 8-bit keyboard interrupt modules (KBI)
+  – External interrupt (IRQ)  
+  Analog modules
+  – One 16-channel 12-bit SAR ADC
+  – Two analog comparators
+  Timers
+  - One 6-channel FlexTimer/PWM (FTM)
+  - Two 2-channel FlexTimer/PWM (FTM)
+  - One 2-channel periodic interrupt timer (PIT)
+  - One Real-time clock (RTC)
+  Communication interfaces
+  - Two 8-bit SPI modules (SPI)
+  - Three SCI/UART modules (SCI)
+  - One I2C module (I2C)
+  Package options
+  - 64-pin QFP/LQFP
+  - 44-pin LQFP
+  - 32-pin LQFP
+        </description>
+      </device>
+      <!-- ******************************  MKE02Z16xxx4  ****************************** -->
+      <device Dname="MKE02Z16xxx4">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="40000000"/>
+        <compile header="Device\Include\MKE02Z4.h"  define="MKE02Z16xxx4"/>
+        <debug      svd="SVD\MKE02Z4.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x4000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0600"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFFE00"  size="0x0200"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MKE02Zxxx_P16KB.FLM" start="0x00000000" size="0x4000"  RAMstart="0x1FFFFE00"  RAMsize="0x0800"  default="1"/>
+        <algorithm  name="Flash\MKE02Zxxx_EE256B.FLM" start="0x10000000" size="0x0100"  RAMstart="0x1FFFFE00"  RAMsize="0x0800"  default="1"/>
+        <description>
+ARM Cortex-M0+ running at up to 40 MHz
+  Memories and memory interfaces
+  - Up to 64 KB flash
+  - Up to 256 B EEPROM
+  - Up to 4 KB RAM
+  - Internal 1 kHz low-power oscillator (LPO)
+  Clocks
+  - 31.25 kHz to 39.0625 kHz oscillator
+  - 4 MHz to 20 MHz oscillator
+  System peripherals
+  – Power management module (PMC) : Run, Wait, Stop modes
+  – Low-voltage detection (LVD)
+  – Watchdog with independent clock source
+  – Programmable cyclic redundancy check module
+  – Serial wire debug interface (SWD)
+  – Bit manipulation engine (BME)  
+  Security and integrity modules
+  - 64-bit unique identification (ID) number per chip
+  Human-machine interface
+  – Up to 57 general-purpose input/output (GPIO)
+  – Two 8-bit keyboard interrupt modules (KBI)
+  – External interrupt (IRQ)  
+  Analog modules
+  – One 16-channel 12-bit SAR ADC
+  – Two analog comparators
+  Timers
+  - One 6-channel FlexTimer/PWM (FTM)
+  - Two 2-channel FlexTimer/PWM (FTM)
+  - One 2-channel periodic interrupt timer (PIT)
+  - One Real-time clock (RTC)
+  Communication interfaces
+  - Two 8-bit SPI modules (SPI)
+  - Three SCI/UART modules (SCI)
+  - One I2C module (I2C)
+  Package options
+  - 64-pin QFP/LQFP
+  - 44-pin LQFP
+  - 32-pin LQFP
+        </description>
+      </device>
+      </subFamily>
+      <!-- ******************************  KE04  ****************************** -->
+      <subFamily DsubFamily="KE04">
+      <!-- ******************************  MKE04Z8xxx4  ****************************** -->
+      <device Dname="MKE04Z8xxx4">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+        <compile header="Device\Include\MKE04Z4.h"  define="MKE04Z8xxx4"/>
+        <debug      svd="SVD\MKE04Z4.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x2000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0300"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFFF00"  size="0x0100"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MKE04Zxxx_P8KB.FLM" start="0x00000000" size="0x2000"    RAMstart="0x1FFFFF00"  RAMsize="0x400"  default="1"/>
+        <book       name="Documents\MKE04P80M48SF0RM.pdf"                  title="MKE04Z8xxx4 Device Reference Manual"/>
+        <book       name="Documents\MKE04P80M48SF0.pdf"                    title="MKE04Z8xxx4 Device Data Sheet"/>
+        <description>
+ARM Cortex-M0+ running at up to 48 MHz
+Memories and memory interfaces
+ - Up to 8 KB flash
+ - Up to 1 KB RAM
+Clocks
+ - 31.25 kHz to 39.0625 kHz oscillator
+ - 4 MHz to 20 MHz oscillator
+System peripherals
+ - PMC with three power modes: 
+   Run, Wait, Stop - Low-voltage detection
+ - Watchdog with independent clock source
+ - Programmable CRC
+ - Serial wire debug interface (SWD)
+ - Aliased SRAM bitband region (BITBAND)
+ - Bit Manipulation Engine (BME)
+Security and integrity modules
+ - 80-bit unique identification (ID) number per chip
+Human-machine interface
+ - Up to 22 general-purpose input/output (GPIO) 
+ - Two 8-bit keyboard interrupt modules (KBI)
+Analog modules
+ - One 12-channel 12-bit SAR ADC
+ - Two analog comparator containing a 6-bit DAC
+Timers
+ - One 6-channel FlexTimer/PWM (FTM)
+ - Two 2-channel FlexTimer/PWM (FTM)
+ - One 2-channel periodic interrupt timer (PIT)
+ - One pulse width timer (PWT)
+ - One Real-time clock (RTC)
+Communication interfaces
+ - One 8-bit SPI modules (SPI)
+ - One SCI/UART modules (SCI)
+ - One I2C module (I2C)
+Package options
+ - 24-pin QFN
+ - 20-pin SOIC
+ - 16-pin TSSOP
+      </description>
+      </device>
+      <device Dname="MKE04Z64xxx4">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+        <compile header="Device\Include\MKE04Z1284.h"  define="MKE04Z64xxx4"/>
+        <debug      svd="SVD\MKE04Z1284.svd"/>
+        <memory     id="IROM1"                       start="0x00000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                       start="0x20000000"  size="0x1800"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                       start="0x1FFFF800"  size="0x0800"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MKE04Zxxx_P64KB.FLM" start="0x00000000" size="0x10000"     RAMstart="0x20000000"  RAMsize="0x1000"  default="1"/>
+        <book       name="Documents\MKE04P80M48SF0RM.pdf"                  title="MKE04Z64xxx4 Device Reference Manual"/>
+        <book       name="Documents\MKE04P80M48SF0.pdf"                    title="MKE04Z64xxx4 Device Data Sheet"/>
+        <description>
+ARM Cortex-M0+ running at up to 48 MHz
+Memories and memory interfaces
+ - Up to 128 KB flash
+ - Up to 16 KB RAM
+Clocks
+ - 31.25 kHz to 39.0625 kHz oscillator
+ - 4 MHz to 20 MHz oscillator
+System peripherals
+ - PMC with three power modes: 
+   Run, Wait, Stop - Low-voltage detection
+ - Watchdog with independent clock source
+ - Programmable CRC
+ - Serial wire debug interface (SWD)
+ - Aliased SRAM bitband region (BITBAND)
+ - Bit Manipulation Engine (BME)
+Security and integrity modules
+ - 80-bit unique identification (ID) number per chip
+Human-machine interface
+ - Up to 22 general-purpose input/output (GPIO) 
+ - Two 8-bit keyboard interrupt modules (KBI)
+ � External interrupt (IRQ)
+Analog modules
+ - One 16-channel 12-bit SAR ADC
+ - Two analog comparator containing a 6-bit DAC
+Timers
+ - One 6-channel FlexTimer/PWM (FTM)
+ - Two 2-channel FlexTimer/PWM (FTM)
+ - One 2-channel periodic interrupt timer (PIT)
+ - One pulse width timer (PWT)
+ - One Real-time clock (RTC)
+Communication interfaces
+ - Two 8-bit SPI modules (SPI)
+ - Three SCI/UART modules (SCI)
+ - Two I2C module (I2C)
+Package options
+ - 80-pin LQFP
+ - 64-pin QFP/LQFP
+ - 44-pin LQFP
+      </description>
+      </device>
+      <device Dname="MKE04Z128xxx4">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+        <compile header="Device\Include\MKE04Z1284.h"  define="MKE04Z128xxx4"/>
+        <debug      svd="SVD\MKE04Z1284.svd"/>
+        <memory     id="IROM1"                       start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                       start="0x20000000"  size="0x3000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                       start="0x1FFFF000"  size="0x1000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MKE04Zxxx_P128KB.FLM" start="0x00000000" size="0x20000"     RAMstart="0x20000000"  RAMsize="0x1000"  default="1"/>
+        <book       name="Documents\MKE04P80M48SF0RM.pdf"                  title="MKE04Z128xxx4 Device Reference Manual"/>
+        <book       name="Documents\MKE04P80M48SF0.pdf"                    title="MKE04Z128xxx4 Device Data Sheet"/>
+        <description>
+ARM Cortex-M0+ running at up to 48 MHz
+Memories and memory interfaces
+ - Up to 128 KB flash
+ - Up to 16 KB RAM
+Clocks
+ - 31.25 kHz to 39.0625 kHz oscillator
+ - 4 MHz to 20 MHz oscillator
+System peripherals
+ - PMC with three power modes: 
+   Run, Wait, Stop - Low-voltage detection
+ - Watchdog with independent clock source
+ - Programmable CRC
+ - Serial wire debug interface (SWD)
+ - Aliased SRAM bitband region (BITBAND)
+ - Bit Manipulation Engine (BME)
+Security and integrity modules
+ - 80-bit unique identification (ID) number per chip
+Human-machine interface
+ - Up to 22 general-purpose input/output (GPIO) 
+ - Two 8-bit keyboard interrupt modules (KBI)
+ - External interrupt (IRQ)
+Analog modules
+ - One 16-channel 12-bit SAR ADC
+ - Two analog comparator containing a 6-bit DAC
+Timers
+ - One 6-channel FlexTimer/PWM (FTM)
+ - Two 2-channel FlexTimer/PWM (FTM)
+ - One 2-channel periodic interrupt timer (PIT)
+ - One pulse width timer (PWT)
+ - One Real-time clock (RTC)
+Communication interfaces
+ - Two 8-bit SPI modules (SPI)
+ - Three SCI/UART modules (SCI)
+ - Two I2C module (I2C)
+Package options
+ - 80-pin LQFP
+ - 64-pin QFP/LQFP
+ - 44-pin LQFP
+      </description>
+      </device>
+      </subFamily>
+      <subFamily DsubFamily="KE06">
+      <!-- ******************************  MKE06Z64xxx4  ****************************** -->
+      <device Dname="MKE06Z64xxx4">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+        <compile header="Device\Include\MKE06Z4.h"  define="MKE06Z64xxx4"/>
+        <debug      svd="SVD\MKE06Z4.svd"/>
+        <memory     id="IROM1"                       start="0x00000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                       start="0x20000000"  size="0x1800"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                       start="0x1FFFF800"  size="0x0800"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MKE06Zxxx_P64KB.FLM" start="0x00000000" size="0x10000"     RAMstart="0x20000000"  RAMsize="0x1000"  default="1"/>
+        <book       name="Documents\MKE06P80M48SF0RM.pdf"                  title="MKE06Z64xxx4 Device Reference Manual"/>
+        <book       name="Documents\MKE06P80M48SF0.pdf"                    title="MKE06Z64xxx4 Device Data Sheet"/>
+        <description>
+ARM Cortex-M0+ running at up to 48 MHz
+Memories and memory interfaces
+ - Up to 128 KB flash
+ - Up to 16 KB SRAM
+Clocks
+ - 31.25 kHz to 39.0625 kHz oscillator
+ - 4 MHz to 24 MHz oscillator
+Package options
+ - 64-pin QFP
+ - 44-pin LQFP
+ - 64-pin LQFP
+ - 80-pin LQFP
+      </description>
+      </device>
+      <!-- ******************************  MKE06Z128xxx4  ****************************** -->
+      <device Dname="MKE06Z128xxx4">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+        <compile header="Device\Include\MKE06Z4.h"  define="MKE06Z128xxx4"/>
+        <debug      svd="SVD\MKE06Z4.svd"/>
+        <memory     id="IROM1"                       start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                       start="0x20000000"  size="0x3000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                       start="0x1FFFF000"  size="0x1000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MKE06Zxxx_P128KB.FLM" start="0x00000000" size="0x20000"     RAMstart="0x20000000"  RAMsize="0x1000"  default="1"/>
+        <book       name="Documents\MKE06P80M48SF0RM.pdf"                  title="MKE06Z128xxx4 Device Reference Manual"/>
+        <book       name="Documents\MKE06P80M48SF0.pdf"                    title="MKE06Z128xxx4 Device Data Sheet"/>
+        <description>
+ARM Cortex-M0+ running at up to 48 MHz
+Memories and memory interfaces
+ - Up to 128 KB flash
+ - Up to 16 KB SRAM
+Clocks
+ - 31.25 kHz to 39.0625 kHz oscillator
+ - 4 MHz to 24 MHz oscillator
+Package options
+ - 64-pin QFP
+ - 44-pin LQFP
+ - 64-pin LQFP
+ - 80-pin LQFP
+      </description>
+      </device>
+      </subFamily>
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- conditions are dependecy rules that can apply to a component or an individual file -->
+    <condition id="Compiler ARM">
+      <!-- conditions selecting ARM Compiler -->
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="KE02Z2">
+      <description>Freescale Kinetis KE02 20MHz devices</description>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKE02Z16xxx2"/>
+      <accept Dname="MKE02Z32xxx2"/>
+      <accept Dname="MKE02Z64xxx2"/>
+    </condition>
+    <condition id="KE02Z4">
+      <description>Freescale Kinetis KE02 40MHz devices</description>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKE02Z16xxx4"/>
+      <accept Dname="MKE02Z32xxx4"/>
+      <accept Dname="MKE02Z64xxx4"/>
+    </condition>
+    <condition id="KE04Z4">
+      <description>Freescale Kinetis KE04 48MHz devices</description>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKE04Z8xxx4"/>
+      </condition>
+    <condition id="KE04Z1284">
+      <description>Freescale Kinetis KE04 64kB/128kB 48MHz devices</description>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKE04Z64xxx4"/>
+      <accept Dname="MKE04Z128xxx4"/>
+    </condition>
+    <condition id="KE06Z4">
+      <description>Freescale Kinetis KE06 48MHz devices</description>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKE06Z64xxx4"/>
+      <accept Dname="MKE06Z128xxx4"/>
+    </condition>
+    <condition id="Kinetis KExx CMSIS Device">
+      <!-- conditions selecting Devices -->
+      <description>Freescale device from KLxx Series and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78" Dname="MKE*"/>
+    </condition>
+
+  </conditions>
+
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="Kinetis KExx CMSIS Device">  <!-- Cversion is necessary -->
+      <description>System Startup for Freescale KExx Series</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_DEVICE_STARTUP_KExx    /* Device Startup for KExx */
+      </RTE_Components_h>
+      <files>
+        <!--  include folder -->
+        <file category="include" name="Device\Include\"/>
+        <!-- startup files -->
+        <file category="source" name="Device\Source\ARM\startup_MKE02Z2.s"     attr="config"     condition="KE02Z2"/>
+        <file category="source" name="Device\Source\ARM\startup_MKE02Z4.s"     attr="config"     condition="KE02Z4"/>
+        <file category="source" name="Device\Source\ARM\startup_MKE04Z4.s"     attr="config"     condition="KE04Z4"/>
+        <file category="source" name="Device\Source\ARM\startup_MKE04Z1284.s"  attr="config"     condition="KE04Z1284"/>
+        <file category="source" name="Device\Source\ARM\startup_MKE06Z4.s"     attr="config"     condition="KE06Z4"/>
+        <!-- system file -->
+        <file category="source" name="Device\Source\system_MKE02Z2.c"      attr="config"     condition="KE02Z2"/>
+        <file category="source" name="Device\Source\system_MKE02Z4.c"      attr="config"     condition="KE02Z4"/>
+        <file category="source" name="Device\Source\system_MKE04Z4.c"      attr="config"     condition="KE04Z4"/>
+        <file category="source" name="Device\Source\system_MKE04Z1284.c"   attr="config"     condition="KE04Z1284"/>
+        <file category="source" name="Device\Source\system_MKE06Z4.c"      attr="config"     condition="KE06Z4"/>
+        </files>
+    </component>
+  </components>
+
+  <boards>
+    <board name="FRDM-KE04Z" vendor="Freescale" revision="Rev. A" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <description>The FRDM-KE04Z is an ultra-low-cost development platform for Kinetis KE04 MCUs.</description>
+      <book category="manual"    name="Documents\FRDM-KE04ZUG.pdf" title="Freedom KE04 User’s Guide"/>
+      <mountedDevice    deviceIndex="0" Dvendor="Freescale:78" Dname="MKE04Z8xxx4"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Freescale:78" Dfamily="KExx Series" DsubFamily="KE04"/>
+      <feature type="ODbg"           n="1"              name="Integrated open-source JTAG via USB"/>
+      <feature type="PWR"            n="5"              name="USB Powered"/>
+      <feature type="Button"         n="1"              name="Reset Button"/>
+      <feature type="LED"            n="1"              name="Tri-color LED"/>
+      <feature type="Accelerometer"  n="1"              name="MMA8451Q Accelerometer"/>
+      <feature type="ContOther"      n="1"              name="Capacitive touch slider"/>
+      <feature type="IrDA"           n="1"              name="IrDA transmitter and receiver"/>
+    </board>
+
+    <board name="FRDM-KE06Z" vendor="Freescale" revision="Rev. A" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <description>The FRDM-KE06Z is a simple, yet sophisticated development platform for Kinetis KE06 MCUs.</description>
+      <book category="manual"    name="Documents\FRDMKE06UG.pdf" title="Freedom KE06 User’s Guide"/>
+      <mountedDevice    deviceIndex="0" Dvendor="Freescale:78" Dname="MKE06Z128xxx4"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Freescale:78" Dfamily="KExx Series" DsubFamily="KE06"/>
+      <feature type="ODbg"           n="1"              name="Integrated open-source JTAG via USB"/>
+      <feature type="PWR"            n="5"              name="USB Powered"/>
+      <feature type="Button"         n="1"              name="Reset Button"/>
+      <feature type="LED"            n="1"              name="Tri-color LED"/>
+      <feature type="Accelerometer"  n="1"              name="MMA8451Q Accelerometer"/>
+      <feature type="CAN"            n="1"              name="CAN communication"/>
+      <feature type="IrDA"           n="1"              name="IrDA transmitter and receiver"/>
+    </board>
+  </boards>
+
+  <examples>
+    <!-- FRDM-KE04Z Development Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards\Freescale\FRDM-KE04Z\Blinky">
+      <description>Blinky example</description>
+      <board name="FRDM-KE04Z" vendor="Freescale" Dvendor="Freescale:78" Dname="MKE04Z8xxx4"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+	
+    <!-- FRDM-KE06Z Development Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards\Freescale\FRDM-KE06Z\Blinky">
+      <description>Blinky example</description>
+      <board name="FRDM-KE06Z" vendor="Freescale" Dvendor="Freescale:78" Dname="MKE06Z128xxx4"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+	
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\Freescale\FRDM-KE06Z\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="FRDM-KE06Z" vendor="Freescale" Dvendor="Freescale:78" Dname="MKE06Z128xxx4"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+  </examples>
+
+</package>

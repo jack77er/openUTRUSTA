@@ -1,0 +1,75 @@
+Marked,Time,Serial Bus,MOSI,MISO
+,-743.0us,Serial1,36,0F
+,-326.2us,Serial1,3B,0F
+,-215.8us,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,542.4us,Serial1,35,0F
+,2.360ms,Serial1,36,0F
+,2.465ms,Serial1,3B,0F
+,2.575ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,3.333ms,Serial1,35,0F
+,5.150ms,Serial1,36,0F
+,5.255ms,Serial1,3B,0F
+,5.365ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,6.123ms,Serial1,35,0F
+,7.940ms,Serial1,36,0F
+,8.045ms,Serial1,3B,0F
+,8.155ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,8.913ms,Serial1,35,0F
+,10.73ms,Serial1,36,0F
+,10.84ms,Serial1,3B,0F
+,10.95ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,11.70ms,Serial1,35,0F
+,13.52ms,Serial1,36,0F
+,13.63ms,Serial1,3B,0F
+,13.74ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,14.49ms,Serial1,35,0F
+,16.31ms,Serial1,36,0F
+,16.42ms,Serial1,3B,0F
+,16.53ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,17.28ms,Serial1,35,0F
+,19.10ms,Serial1,36,0F
+,19.21ms,Serial1,3B,0F
+,19.32ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,20.07ms,Serial1,35,0F
+,21.89ms,Serial1,36,0F
+,22.00ms,Serial1,3B,0F
+,22.11ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,22.86ms,Serial1,35,0F
+,24.68ms,Serial1,36,0F
+,24.78ms,Serial1,3B,0F
+,24.90ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,25.65ms,Serial1,35,0F
+,27.47ms,Serial1,36,0F
+,27.57ms,Serial1,3B,0F
+,27.68ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,28.44ms,Serial1,35,0F
+,30.27ms,Serial1,36,0F
+,30.37ms,Serial1,3B,0F
+,30.48ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,31.24ms,Serial1,35,0F
+,33.06ms,Serial1,36,0F
+,33.16ms,Serial1,3B,0F
+,33.27ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,34.03ms,Serial1,35,0F
+,35.85ms,Serial1,36,0F
+,35.95ms,Serial1,3B,0F
+,36.06ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,36.82ms,Serial1,35,0F
+,38.64ms,Serial1,36,0F
+,38.74ms,Serial1,3B,0F
+,38.85ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,39.61ms,Serial1,35,0F
+,41.43ms,Serial1,36,0F
+,41.53ms,Serial1,3B,0F
+,41.64ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,42.40ms,Serial1,35,0F
+,44.22ms,Serial1,36,0F
+,44.32ms,Serial1,3B,0F
+,44.43ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,45.19ms,Serial1,35,0F
+,47.01ms,Serial1,36,0F
+,47.11ms,Serial1,3B,0F
+,47.22ms,Serial1,7F 06 55 01 31 9E 03 AA FF,0F 0F 0F 0F 0F 0F 0F 0F 0F
+,47.98ms,Serial1,35,0F
+,49.80ms,Serial1,36,0F
+,49.90ms,Serial1,3B,0F

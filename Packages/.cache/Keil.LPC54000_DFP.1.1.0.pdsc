@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>LPC54000_DFP</name>
+  <description>NXP LPC54000 Series Device Support</description>
+
+  <releases>
+    <release version="1.1.0" date="2015-05-06">
+      Updated LED_LPCXpresso54102.c (LPCXpresso board uses different LED pins than Niobe board).
+      Renamed devices, subfamily according datasheet
+      Added device features
+      Added RTX_Blinky example
+    </release>
+    <release version="1.0.0" date="2014-11-06">
+      First Release version of LPC54000 Device Family Pack.
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>NXP</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package NXP</keyword>
+    <keyword>LPC54100</keyword>
+  </keywords>
+
+  <devices>
+    <family Dfamily="LPC54000 Series" Dvendor="NXP:11">
+
+      <!-- ************************  Subfamily 'LPC54100'  **************************** -->
+      <subFamily DsubFamily="LPC54100">
+        <processor Pname="M4"     Dcore="Cortex-M4"  DcoreVersion="r0p1" Dfpu="1" Dmpu="1" Dendian="Little-endian" Dclock="100000000"/>
+        <book Pname="M4"     name="Documents\DUI0553A_cortex_m4_dgug.pdf"       title="Cortex-M4 Generic User Guide"/>
+  
+        <book name="Documents\LPC5410X.pdf" title="LPC5410x Datasheet"/>
+        <book name="Documents\UM10850.pdf"  title="LPC5410x User manual"/>
+        <description>
+The LPC54100 Series microcontrollers were designed from the ground up to deliver the industry's best power efficiency
+for always-on sensor-processing applications. These highly efficient MCUs support ultra-low-power performance for
+sensor tasks such as listening, collection, and aggregation of sensor data as well as complex sensor processing tasks
+such as sensor fusion.
+
+Crucial for always-on applications, LPC54100 Series MCUs require as little as 3 uA for continuous sensor listening.
+A first for sensor applications, an asymmetric dual-core architecture enables scalable active power/performance:
+Developers can use the 55 uA/MHz Cortex-M0+ core for sensor data collection, aggregation, and external communications,
+or the ARM Cortex-M4 core (100 uA/MHz) to execute math-intensive algorithms (i.e., motion sensor fusion) more quickly
+while saving power. The LPC54100 Series also includes single-core (ARM Cortex-M4) options with similar sensor listening and Cortex-M4 power efficiencies.
+        </description>
+
+        <compile Pname="M4"     define="CORE_M4"/>
+        <compile header="Device\Include\LPC54xxx.h"/>
+        <debug  svd="SVD\LPC5410x.svd"/>
+   
+        <feature type="UART"          n="4"/>
+        <feature type="I2C"           n="3"/>
+        <feature type="SPI"           n="2"/>
+        <feature type="ADC"           n="12"       m="12"/>
+        <feature type="Timer"         n="5"        m="32"/>
+        <feature type="PWM"           n="1"/>
+        <feature type="Temp"          n="-40"      m="105"/>
+        <feature type="VCC"           n="1.62"     m="3.60"/>
+
+        <!-- *************************  Device 'LPC54101J256BD64'  ***************************** -->
+        <device Dname="LPC54101J256BD64">
+          <memory     id="IROM1"                              start="0x00000000"  size="0x40000"  startup="1" default="1"/>
+          <memory     id="IRAM1"                              start="0x02000000"  size="0x10000"  init   ="0" default="1"/>
+          <memory     id="IRAM2"                              start="0x02010000"  size="0x08000"  init   ="0" default="1"/>
+          <algorithm Pname="M4" name="Flash\LPC54xxx_256.FLM" start="0x00000000"  size="0x40000"              default="1"/>
+
+          <feature type="IOs"         n="50"/>
+          <feature type="QFP"         n="64"        name="Low-Profile QFP Package"/>
+        </device>
+
+        <!-- *************************  Device 'LPC54101J256UK49'  ***************************** -->
+        <device Dname="LPC54101J256UK49">
+          <memory     id="IROM1"                              start="0x00000000"  size="0x40000"  startup="1" default="1"/>
+          <memory     id="IRAM1"                              start="0x02000000"  size="0x10000"  init   ="0" default="1"/>
+          <memory     id="IRAM2"                              start="0x02010000"  size="0x08000"  init   ="0" default="1"/>
+          <algorithm Pname="M4" name="Flash\LPC54xxx_256.FLM" start="0x00000000"  size="0x40000"              default="1"/>
+
+          <feature type="IOs"         n="39"/>
+          <feature type="CSP"         n="49"         name="Wafer-Level Chip-Scale Package"/>
+        </device>
+
+        <!-- *************************  Device 'LPC54101J512BD64'  ***************************** -->
+        <device Dname="LPC54101J512BD64">
+          <memory     id="IROM1"                              start="0x00000000"  size="0x80000"  startup="1" default="1"/>
+          <memory     id="IRAM1"                              start="0x02000000"  size="0x10000"  init   ="0" default="1"/>
+          <memory     id="IRAM2"                              start="0x02010000"  size="0x08000"  init   ="0" default="1"/>
+          <algorithm Pname="M4" name="Flash\LPC54xxx_512.FLM" start="0x00000000"  size="0x80000"              default="1"/>
+
+          <feature type="IOs"         n="50"/>
+          <feature type="QFP"         n="64"        name="Low-Profile QFP Package"/>
+        </device>
+
+        <!-- *************************  Device 'LPC54101J512UK49'  ***************************** -->
+        <device Dname="LPC54101J512UK49">
+          <memory     id="IROM1"                              start="0x00000000"  size="0x80000"  startup="1" default="1"/>
+          <memory     id="IRAM1"                              start="0x02000000"  size="0x10000"  init   ="0" default="1"/>
+          <memory     id="IRAM2"                              start="0x02010000"  size="0x08000"  init   ="0" default="1"/>
+          <algorithm Pname="M4" name="Flash\LPC54xxx_512.FLM" start="0x00000000"  size="0x80000"              default="1"/>
+
+          <feature type="IOs"         n="39"/>
+          <feature type="CSP"         n="49"         name="Wafer-Level Chip-Scale Package"/>
+        </device>
+
+        <!-- *************************  Device 'LPC54102J256BD64'  ***************************** -->
+        <device Dname="LPC54102J256BD64">
+          <processor Pname="M0plus" Dcore="Cortex-M0+" DcoreVersion="r0p1" Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+          <book Pname="M0plus" name="Documents\DUI0662B_cortex_m0p_r0p1_dgug.pdf" title="Cortex-M0+ Generic User Guide"/>
+          <compile Pname="M0plus" define="CORE_M0PLUS"/>
+
+          <memory     id="IROM1"                              start="0x00000000"  size="0x40000"  startup="1" default="1"/>
+          <memory     id="IRAM1"                              start="0x02000000"  size="0x10000"  init   ="0" default="1"/>
+          <memory     id="IRAM2"                              start="0x02010000"  size="0x08000"  init   ="0" default="1"/>
+          <algorithm Pname="M4" name="Flash\LPC54xxx_256.FLM" start="0x00000000"  size="0x40000"              default="1"/>
+
+          <feature type="IOs"         n="50"/>
+          <feature type="QFP"         n="64"        name="Low-Profile QFP Package"/>
+        </device>
+
+        <!-- *************************  Device 'LPC54102J256UK49'  ***************************** -->
+        <device Dname="LPC54102J256UK49">
+          <processor Pname="M0plus" Dcore="Cortex-M0+" DcoreVersion="r0p1" Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+          <book Pname="M0plus" name="Documents\DUI0662B_cortex_m0p_r0p1_dgug.pdf" title="Cortex-M0+ Generic User Guide"/>
+          <compile Pname="M0plus" define="CORE_M0PLUS"/>
+
+          <memory     id="IROM1"                              start="0x00000000"  size="0x40000"  startup="1" default="1"/>
+          <memory     id="IRAM1"                              start="0x02000000"  size="0x10000"  init   ="0" default="1"/>
+          <memory     id="IRAM2"                              start="0x02010000"  size="0x08000"  init   ="0" default="1"/>
+          <algorithm Pname="M4" name="Flash\LPC54xxx_256.FLM" start="0x00000000"  size="0x40000"              default="1"/>
+
+          <feature type="IOs"         n="39"/>
+          <feature type="CSP"         n="49"         name="Wafer-Level Chip-Scale Package"/>
+        </device>
+
+        <!-- *************************  Device 'LPC54102J512BD64'  ***************************** -->
+        <device Dname="LPC54102J512BD64">
+          <processor Pname="M0plus" Dcore="Cortex-M0+" DcoreVersion="r0p1" Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+          <book Pname="M0plus" name="Documents\DUI0662B_cortex_m0p_r0p1_dgug.pdf" title="Cortex-M0+ Generic User Guide"/>
+          <compile Pname="M0plus" define="CORE_M0PLUS"/>
+
+          <memory     id="IROM1"                              start="0x00000000"  size="0x80000"  startup="1" default="1"/>
+          <memory     id="IRAM1"                              start="0x02000000"  size="0x10000"  init   ="0" default="1"/>
+          <memory     id="IRAM2"                              start="0x02010000"  size="0x08000"  init   ="0" default="1"/>
+          <algorithm Pname="M4" name="Flash\LPC54xxx_512.FLM" start="0x00000000"  size="0x80000"              default="1"/>
+
+          <feature type="IOs"         n="50"/>
+          <feature type="QFP"         n="64"        name="Low-Profile QFP Package"/>
+        </device>
+
+        <!-- *************************  Device 'LPC54102J512UK49'  ***************************** -->
+        <device Dname="LPC54102J512UK49">
+          <processor Pname="M0plus" Dcore="Cortex-M0+" DcoreVersion="r0p1" Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+          <book Pname="M0plus" name="Documents\DUI0662B_cortex_m0p_r0p1_dgug.pdf" title="Cortex-M0+ Generic User Guide"/>
+          <compile Pname="M0plus" define="CORE_M0PLUS"/>
+
+          <memory     id="IROM1"                              start="0x00000000"  size="0x80000"  startup="1" default="1"/>
+          <memory     id="IRAM1"                              start="0x02000000"  size="0x10000"  init   ="0" default="1"/>
+          <memory     id="IRAM2"                              start="0x02010000"  size="0x08000"  init   ="0" default="1"/>
+          <algorithm Pname="M4" name="Flash\LPC54xxx_512.FLM" start="0x00000000"  size="0x80000"              default="1"/>
+
+          <feature type="IOs"         n="39"/>
+          <feature type="CSP"         n="49"         name="Wafer-Level Chip-Scale Package"/>
+        </device>
+
+      </subFamily>
+
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- Compiler Conditions -->
+    <condition id="Compiler ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <!-- Device Conditions -->
+    <condition id="LPC54100">
+      <description>NXP LPC54100 Devices</description>
+      <require Dvendor="NXP:11" Dname="LPC54*"/>
+    </condition>
+
+    <condition id="LPC54100 CM4">
+      <description>NXP LPC54100 CM4 Devices</description>
+      <require Dcore="Cortex-M4"/>
+      <require condition="LPC54100"/>
+    </condition>
+
+    <condition id="LPC54100 CM0+">
+      <description>NXP LPC54100 CM0+ Devices</description>
+      <require Dcore="Cortex-M0+"/>
+      <require condition="LPC54100"/>
+    </condition>
+
+    <!-- Device + CMSIS Conditions -->
+    <condition id="LPC54100 CMSIS">
+      <description>NXP LPC54100 Devices and CMSIS-CORE</description>
+      <require condition="LPC54100"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="LPC54100 CM4 CMSIS">
+      <description>NXP LPC54100 CM4 Devices and CMSIS-CORE</description>
+      <require condition="LPC54100 CM4"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="LPC54100 CM0+ CMSIS">
+      <description>NXP LPC54100 CM0+ Devices and CMSIS-CORE</description>
+      <require condition="LPC54100 CM0+"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <!-- Startup LPC54100 CM4 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="LPC54100 CM4 CMSIS">
+      <description>System Startup for NXP LPC54100 CM4 Devices</description>
+      <files>
+        <file category="include"   name="Device\Include\"/>
+        <file category="sourceAsm" name="Device\Source\ARM\keil_startup_lpc5410x.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="sourceC"   name="Device\Source\system_LPC54xxx.c"            attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup LPC54100 CM0+ -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="LPC54100 CM0+ CMSIS">
+      <description>System Startup for NXP LPC54100 CM0+ Devices</description>
+      <files>
+        <file category="include"   name="Device\Include\"/>
+        <file category="sourceAsm" name="Device\Source\ARM\keil_startup_lpc5410x-m0.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="sourceC"   name="Device\Source\system_LPC54xxx.c"               attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- LPCXpresso54102 Board Support-->
+    <bundle Cbundle="LPCXpresso54102" Cclass="Board Support" Cversion="1.0.0">
+      <description>NXP LPCXpresso54102 Board</description>
+      <doc></doc>
+      <component Cgroup="LED" condition="LPC54100 CMSIS">
+      <description>LED driver for NXP LPCXpresso54102 Board</description>
+        <files>
+          <file category="source" name="Boards\NXP\LPCXpresso54102\Common\LED_LPCXpresso54102.c"/>
+        </files>
+      </component>
+    </bundle>
+
+  </components>
+
+  <boards>
+    <board vendor="NXP" name="LPCXpresso54102" revision="Rev. A" salesContact="http://www.nxp.com/support.html">
+      <description>NXP LPCXpresso54102 Board</description>
+      <image small="Boards\NXP\LPCXpresso54102\Documents\LPCXpresso54102_small.png"
+             large="Boards\NXP\LPCXpresso54102\Documents\LPCXpresso54102_large.png"/>
+      <book category="overview"  name="http://www.nxp.com/demoboard/OM13077.html"                         title="LPCXpresso Board for the LPC54100 family of MCUs"/>
+      <book category="schematic" name="Boards\NXP\LPCXpresso54102\Documents\LPCX54102_Schematic_RevA.pdf" title="LPCXpresso54102 Schematics"/>
+      <book category="manual"    name="Boards\NXP\LPCXpresso54102\Documents\UM10855-om13077.pdf"          title="LPCXpresso54102User Manual"/>
+      <mountedDevice    deviceIndex="0" Dvendor="NXP:11" Dname="LPC54102J512BD64"/>
+      <compatibleDevice deviceIndex="0" Dvendor="NXP:11" DsubFamily="LPC54100"/>
+      <feature type="XTAL"            n="1200000"/>
+      <feature type="XTAL"            n="32768"/>
+      <feature type="PWR"             n="5"              name="USB Powered"/>
+      <feature type="LED"             n="3"              name="I/O Port RGB LED"/>
+      <feature type="Button"          n="3"              name="Reset, Wake, ISP button"/>
+      <feature type="ArduinoFF"       n="1"/>
+      <feature type="ConnOther"       n="1"              name="FTDI compatible interface"/>
+      <feature type="ConnOther"       n="1"              name="PMOD compatible interface"/>
+      <feature type="ODbg"            n="1"              name="LPC-Link2"/>
+      <debugInterface adapter="JTAG/SW" connector="10 pin Cortex debug (0.05 inch connector)"/>
+    </board>
+  </boards>
+
+  <examples>
+    <!-- LPCXpresso54102 Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards\NXP\LPCXpresso54102\Blinky">
+      <description>Blinky example</description>
+      <board name="LPCXpresso54102" vendor="NXP"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\NXP\LPCXpresso54102\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="LPCXpresso54102" vendor="NXP"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+    <example name="DualCore Blinky" doc="Abstract.txt" folder="Boards\NXP\LPCXpresso54102\DualCore">
+      <description>DualCore Blinky example</description>
+      <board name="LPCXpresso54102" vendor="NXP"/>
+      <project>
+        <environment name="uv" load="DualCore.uvmpw"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="CMSIS-RTOS DualCore Blinky" doc="Abstract.txt" folder="Boards\NXP\LPCXpresso54102\RTX_DualCore">
+      <description>CMSIS-RTOS based DualCore Blinky example</description>
+      <board name="LPCXpresso54102" vendor="NXP"/>
+      <project>
+        <environment name="uv" load="DualCore.uvmpw"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+  </examples>
+
+</package>

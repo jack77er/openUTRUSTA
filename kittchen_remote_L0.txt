@@ -1,0 +1,59 @@
+Configuration	kittchen_remote_L0
+STM32CubeMX 	4.3.1
+Date	01/20/2015
+MCU	STM32L051K8Tx
+
+
+
+PERIPHERALS	MODES	FUNCTIONS	PINS
+SPI1	Full-Duplex Master	SPI1_MISO	PA6
+SPI1	Full-Duplex Master	SPI1_MOSI	PA7
+SPI1	Full-Duplex Master	SPI1_SCK	PA5
+SPI1	Hardware	SPI1_NSS	PA4
+SYS	Serial_Wire	SYS_SWCLK	PA14
+SYS	Serial_Wire	SYS_SWDIO	PA13
+
+
+
+Pin Nb	PINs	FUNCTIONs
+8	PA2	GPIO_Input
+9	PA3	GPIO_Input
+10	PA4	SPI1_NSS
+11	PA5	SPI1_SCK
+12	PA6	SPI1_MISO
+13	PA7	SPI1_MOSI
+23	PA13	SYS_SWDIO
+24	PA14	SYS_SWCLK
+25	PA15	GPIO_Output
+26	PB3	GPXTI3
+27	PB4	GPXTI4
+28	PB5	GPXTI5
+29	PB6	GPIO_Output
+
+
+
+SOFTWARE PROJECT
+
+Project Settings : 
+Project Name : kittchen_remote_L0
+Project Folder : D:\DB\Dropbox\Development\24ghz_kuechenbeleuchtung_steuerung
+Toolchain / IDE : TrueSTUDIO 5.0
+Firmware Package Name and Version : STM32Cube FW_L0 V1.1.0
+
+
+Code Generation Settings : 
+STM32Cube Firmware Library Package : Copy all used libraries into the project folder
+Generate peripheral initialization as a pair of '.c/.h' files per IP : No
+Backup previously generated files when re-generating : No
+Delete previously generated files when not re-generated : Yes
+Set all free pins as analog (to optimize the power consumption) : No
+
+
+Toolchains Settings : 
+Compiler Optimizations : Balanced Size/Speed
+
+
+
+
+
+

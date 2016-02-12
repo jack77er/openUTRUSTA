@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <name>MDK-Network_DS</name>
+  <description>Keil MDK-ARM Professional Middleware Dual-Stack IPv4/IPv6 Network for ARM Cortex-M based devices</description>
+  <!-- web download link -->
+  <url>http://www.keil.com/pack/</url>
+  <releases>
+    <release version="0.10.0" date="2015-04-24">
+      Beta 2 release of the MDK-Middleware Network Dual Stack Component
+      Updated Network 7.0.0
+      - added network core/system thread as well as ETH, PPP and SLIP interface threads
+      - added Stateless Address Auto Configuration (SLAAC)
+      - added IPv6 FTP extension to FTP server and client
+      - ... (see revision history for further details)
+      Added Ethernet PHY KSZ8061RNB Driver
+      Added Ethernet PHY KSZ8081RNA Driver
+      Updated KSZ8851SNL ETH driver (GetMacAddress)
+      Note: This PACK is to be used with MDK 5.14 or higher
+    </release>
+    <release version="0.9.0" date="2015-01-16">
+      Initial public Beta Version of the new MDK-Middleware Network Dual Stack Component supporting both IPv4 and IPv6.
+      - see documentation for the API specification and for instructions on migrating existing applications.
+      - the API is incompatible with the MDK-Middleware Network component 6.2
+      Networking examples projects for MCB1800, STM32F400 and STM32F200 are included in this pack
+      Note: This PACK is to be used with MDK 5.13 or higher
+    </release>
+  </releases>
+  <conditions>
+    <condition id="Cortex-M Device">
+      <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M3, Cortex-M4, SC000 or SC3000</description>
+      <accept Dcore="Cortex-M0"/>
+      <accept Dcore="Cortex-M0+"/>
+      <accept Dcore="Cortex-M3"/>
+      <accept Dcore="Cortex-M4"/>
+      <accept Dcore="Cortex-M7"/>
+      <accept Dcore="SC000"/>
+      <accept Dcore="SC300"/>
+    </condition>
+    <condition id="CMSIS Core">
+      <description>CMSIS Core for Cortex-M</description>
+      <require condition="Cortex-M Device"/>
+      <require Cclass="CMSIS" Cgroup="CORE" Cversion="3.30"/>
+    </condition>
+    <condition id="CMSIS Core with RTOS">
+      <description>CMSIS Core with RTOS for Cortex-M</description>
+      <require condition="CMSIS Core"/>
+      <require Cclass="CMSIS" Cgroup="RTOS"/>
+    </condition>
+    <condition id="CMSIS Core with RTOS and SPI Driver">
+      <description>CMSIS Core with RTOS for Cortex-M and SPI Driver</description>
+      <require condition="CMSIS Core"/>
+      <require Cclass="CMSIS" Cgroup="RTOS"/>
+      <require Cclass="CMSIS Driver" Cgroup="SPI" Capiversion="2.01"/>
+    </condition>
+    <condition id="Network Core">
+      <description>Network CORE component</description>
+      <require Cbundle="MDK-Pro Dual Stack" Cclass="Network" Cgroup="CORE"/>
+    </condition>
+    <condition id="Network Interface">
+      <description>Network Interface and CORE component</description>
+      <require condition="Network Core"/>
+      <require Cclass="Network" Cgroup="Interface"/>
+    </condition>
+    <condition id="Network UDP">
+      <description>Network UDP and CORE component</description>
+      <require condition="Network Core"/>
+      <require Cclass="Network" Cgroup="Socket" Csub="UDP"/>
+    </condition>
+    <condition id="Network UDP and File System Drive">
+      <description>Network UDP and CORE component with File System Drive</description>
+      <require condition="Network Core"/>
+      <require Cclass="Network" Cgroup="Socket" Csub="UDP"/>
+      <require Cclass="File System" Cgroup="Drive"/>
+    </condition>
+    <condition id="Network TCP">
+      <description>Network TCP and CORE component</description>
+      <require condition="Network Core"/>
+      <require Cclass="Network" Cgroup="Socket" Csub="TCP"/>
+    </condition>
+    <condition id="Network TCP and File System Drive">
+      <description>Network TCP and CORE component with File System Drive</description>
+      <require condition="Network Core"/>
+      <require Cclass="Network" Cgroup="Socket" Csub="TCP"/>
+      <require Cclass="File System" Cgroup="Drive"/>
+    </condition>
+    <condition id="Network UDP/TCP">
+      <description>Network UDP/TCP and CORE component</description>
+      <require condition="Network Core"/>
+      <require Cclass="Network" Cgroup="Socket" Csub="UDP"/>
+      <require Cclass="Network" Cgroup="Socket" Csub="TCP"/>
+    </condition>
+    <condition id="Network Web Server Compact">
+      <description>Network Web Server Compact</description>
+      <require condition="Network Core"/>
+      <require Cclass="Network" Cgroup="Socket" Csub="TCP"/>
+      <deny Cclass="Network" Cgroup="Service" Csub="Web Server"/>
+    </condition>
+    <condition id="Network Web Server">
+      <description>Network Web Server</description>
+      <require condition="Network Core"/>
+      <require Cclass="Network" Cgroup="Socket" Csub="TCP"/>
+      <require Cclass="File System" Cgroup="Drive"/>
+      <deny Cclass="Network" Cgroup="Service" Csub="Web Server Compact"/>
+    </condition>
+    <condition id="ETH Driver Single-file">
+      <description>Ethernet Driver: MAC with built-in PHY</description>
+      <require Cclass="CMSIS Driver" Cgroup="Ethernet" Capiversion="2.01"/>
+      <deny    Cclass="CMSIS Driver" Cgroup="Ethernet MAC" Capiversion="2.01"/>
+      <deny    Cclass="CMSIS Driver" Cgroup="Ethernet PHY" Capiversion ="2.00"/>
+    </condition>
+    <condition id="ETH Driver Single- and Multi-file">
+      <description>Ethernet Driver: MAC with built-in PHY and MAC and PHY separate</description>
+      <require Cclass="CMSIS Driver" Cgroup="Ethernet" Capiversion ="2.01"/>
+      <require Cclass="CMSIS Driver" Cgroup="Ethernet MAC" Capiversion ="2.01"/>
+      <require Cclass="CMSIS Driver" Cgroup="Ethernet PHY" Capiversion="2.00"/>
+    </condition>
+    <condition id="ETH Driver Multi-file">
+      <description>Ethernet Driver: MAC and PHY</description>
+      <deny    Cclass="CMSIS Driver" Cgroup="Ethernet" Capiversion="2.01"/>
+      <require Cclass="CMSIS Driver" Cgroup="Ethernet MAC" Capiversion="2.01"/>
+      <require Cclass="CMSIS Driver" Cgroup="Ethernet PHY" Capiversion="2.00"/>
+    </condition>
+    <condition id="Network Driver ETH">
+      <description>Network Ethernet Driver</description>
+      <require condition="Network Core"/>
+      <accept condition="ETH Driver Single- and Multi-file"/>
+      <accept condition="ETH Driver Single-file"/>
+      <accept condition="ETH Driver Multi-file"/>
+    </condition>
+    <condition id="Network Driver PPP">
+      <description>Network PPP Driver</description>
+      <require condition="Network Core"/>
+      <require Cclass="CMSIS Driver" Cgroup="USART" Capiversion="2.01"/>
+      <deny Cclass="Network" Cgroup="Interface" Csub="SLIP"/>
+    </condition>
+    <condition id="Network Driver SLIP">
+      <description>Network SLIP Driver</description>
+      <require condition="Network Core"/>
+      <require Cclass="CMSIS Driver" Cgroup="USART" Capiversion="2.01"/>
+      <deny Cclass="Network" Cgroup="Interface" Csub="PPP"/>
+    </condition>
+    <!-- ARMCC -->
+    <condition id="CM0_LE_ARMCC">
+      <description>Cortex-M0 or Cortex-M0+ or SC000 processor based device in little endian mode for the ARM Compiler</description>
+      <accept Dcore="Cortex-M0"/>
+      <accept Dcore="Cortex-M0+"/>
+      <accept Dcore="SC000"/>
+      <require Dendian="Little-endian"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="CM0_BE_ARMCC">
+      <description>Cortex-M0 or Cortex-M0+ or SC000 processor based device in big endian mode for the ARM Compiler</description>
+      <accept Dcore="Cortex-M0"/>
+      <accept Dcore="Cortex-M0+"/>
+      <accept Dcore="SC000"/>
+      <require Dendian="Big-endian"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="CM3_LE_ARMCC">
+      <description>Cortex-M3 or SC300 processor based device in little endian mode for the ARM Compiler</description>
+      <accept Dcore="Cortex-M3"/>
+      <accept Dcore="SC300"/>
+      <require Dendian="Little-endian"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="CM3_BE_ARMCC">
+      <description>Cortex-M3 or SC300 processor based device in big endian mode for the ARM Compiler</description>
+      <accept Dcore="Cortex-M3"/>
+      <accept Dcore="SC300"/>
+      <require Dendian="Big-endian"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="CM4_LE_ARMCC">
+      <description>Cortex-M4 processor based device in little endian mode for the ARM Compiler</description>
+      <require Dcore="Cortex-M4" Dfpu="NO_FPU" Dendian="Little-endian"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="CM4_BE_ARMCC">
+      <description>Cortex-M4 processor based device in big endian mode for the ARM Compiler</description>
+      <require Dcore="Cortex-M4" Dfpu="NO_FPU" Dendian="Big-endian"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="CM4F_LE_ARMCC">
+      <description>Cortex-M4 processor based device using Floating Point Unit in little endian mode for the ARM Compiler</description>
+      <require Dcore="Cortex-M4" Dfpu="FPU" Dendian="Little-endian"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="CM4F_BE_ARMCC">
+      <description>Cortex-M4 processor based device using Floating Point Unit in big endian mode for the ARM Compiler</description>
+      <require Dcore="Cortex-M4" Dfpu="FPU" Dendian="Big-endian"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="CM7_LE_ARMCC">
+      <description>Cortex-M7 processor based device in little endian mode for the ARM Compiler</description>
+      <require Dcore="Cortex-M7" Dfpu="NO_FPU" Dendian="Little-endian"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="CM7_BE_ARMCC">
+      <description>Cortex-M7 processor based device in big endian mode for the ARM Compiler</description>
+      <require Dcore="Cortex-M7" Dfpu="NO_FPU" Dendian="Big-endian"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="CM7F_LE_ARMCC">
+      <description>Cortex-M7 processor based device using Floating Point Unit in little endian mode for the ARM Compiler</description>
+      <accept Dcore="Cortex-M7" Dfpu="SP_FPU" Dendian="Little-endian"/>
+      <accept Dcore="Cortex-M7" Dfpu="DP_FPU" Dendian="Little-endian"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="CM7F_BE_ARMCC">
+      <description>Cortex-M7 processor based device using Floating Point Unit in big endian mode for the ARM Compiler</description>
+      <accept Dcore="Cortex-M7" Dfpu="SP_FPU" Dendian="Big-endian"/>
+      <accept Dcore="Cortex-M7" Dfpu="DP_FPU" Dendian="Big-endian"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+  </conditions>
+  <taxonomy>
+    <description Cclass="Network" Cgroup="Interface">Connection Mechanism</description>
+    <description Cclass="Network" Cgroup="Service">Network Services</description>
+    <description Cclass="Network" Cgroup="Socket">Network protocol</description>
+  </taxonomy>
+  <components>
+    <!-- Network -->
+    <bundle Cbundle="MDK-Pro Dual Stack" Cclass="Network" Cversion="7.0.0">
+      <description>IPv4/IPv6 Networking using Ethernet or Serial protocols</description>
+      <doc>Doc/Network_DS/html/index.html</doc>
+      <component Cgroup="CORE" Cvariant="Release IPv4/IPv6" condition="CMSIS Core with RTOS">
+        <!-- short component description -->
+        <description>IPv4/IPv6 Networking Core for Cortex-M (Release)</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Core                /* Network Core */
+          #define RTE_Network_IPv4                /* Network IPv4 Stack */
+          #define RTE_Network_IPv6                /* Network IPv6 Stack */
+          #define RTE_Network_Release             /* Network Release Version */
+        </RTE_Components_h>
+        <files>
+          <!-- CPU independent -->
+          <!-- Removed Link for CORE as there's no special page for the Network CORE -->
+          <file category="header" name="Network_DS/Include/rl_net.h"/>
+          <file category="source" name="Network_DS/Config/Net_Config.c" attr="config" version="7.0"/>
+          <!-- CPU and Compiler dependent -->
+          <!-- ARMCC -->
+          <file category="library" condition="CM0_LE_ARMCC"  name="Network_DS/Lib/ARM/Net_CM0_L.lib"/>
+          <file category="library" condition="CM0_BE_ARMCC"  name="Network_DS/Lib/ARM/Net_CM0_B.lib"/>
+          <file category="library" condition="CM3_LE_ARMCC"  name="Network_DS/Lib/ARM/Net_CM3_L.lib"/>
+          <file category="library" condition="CM3_BE_ARMCC"  name="Network_DS/Lib/ARM/Net_CM3_B.lib"/>
+          <file category="library" condition="CM4_LE_ARMCC"  name="Network_DS/Lib/ARM/Net_CM3_L.lib"/>
+          <file category="library" condition="CM4_BE_ARMCC"  name="Network_DS/Lib/ARM/Net_CM3_B.lib"/>
+          <file category="library" condition="CM4F_LE_ARMCC" name="Network_DS/Lib/ARM/Net_CM3_L.lib"/>
+          <file category="library" condition="CM4F_BE_ARMCC" name="Network_DS/Lib/ARM/Net_CM3_B.lib"/>
+          <file category="library" condition="CM7_LE_ARMCC"  name="Network_DS/Lib/ARM/Net_CM3_L.lib"/>
+          <file category="library" condition="CM7_BE_ARMCC"  name="Network_DS/Lib/ARM/Net_CM3_B.lib"/>
+          <file category="library" condition="CM7F_LE_ARMCC" name="Network_DS/Lib/ARM/Net_CM3_L.lib"/>
+          <file category="library" condition="CM7F_BE_ARMCC" name="Network_DS/Lib/ARM/Net_CM3_B.lib"/>
+        </files>
+      </component>
+      <component Cgroup="CORE" Cvariant="Debug IPv4/IPv6" condition="CMSIS Core with RTOS">
+        <!-- short component description -->
+        <description>IPv4/IPv6 Networking Core for Cortex-M (Debug)</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Core                /* Network Core */
+          #define RTE_Network_IPv4                /* Network IPv4 Stack */
+          #define RTE_Network_IPv6                /* Network IPv6 Stack */
+          #define RTE_Network_Debug               /* Network Debug Version */
+        </RTE_Components_h>
+        <files>
+          <!-- CPU independent -->
+          <!-- Removed Link for CORE as there's no special page for the Network CORE -->
+          <file category="header" name="Network_DS/Include/rl_net.h"/>
+          <file category="source" name="Network_DS/Config/Net_Config.c" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Config/Net_Debug.c" attr="config" version="7.0"/>
+          <!-- CPU and Compiler dependent -->
+          <!-- ARMCC -->
+          <file category="library" condition="CM0_LE_ARMCC"  name="Network_DS/Lib/ARM/Net_Dbg_CM0_L.lib"/>
+          <file category="library" condition="CM0_BE_ARMCC"  name="Network_DS/Lib/ARM/Net_Dbg_CM0_B.lib"/>
+          <file category="library" condition="CM3_LE_ARMCC"  name="Network_DS/Lib/ARM/Net_Dbg_CM3_L.lib"/>
+          <file category="library" condition="CM3_BE_ARMCC"  name="Network_DS/Lib/ARM/Net_Dbg_CM3_B.lib"/>
+          <file category="library" condition="CM4_LE_ARMCC"  name="Network_DS/Lib/ARM/Net_Dbg_CM3_L.lib"/>
+          <file category="library" condition="CM4_BE_ARMCC"  name="Network_DS/Lib/ARM/Net_Dbg_CM3_B.lib"/>
+          <file category="library" condition="CM4F_LE_ARMCC" name="Network_DS/Lib/ARM/Net_Dbg_CM3_L.lib"/>
+          <file category="library" condition="CM4F_BE_ARMCC" name="Network_DS/Lib/ARM/Net_Dbg_CM3_B.lib"/>
+          <file category="library" condition="CM7_LE_ARMCC"  name="Network_DS/Lib/ARM/Net_Dbg_CM3_L.lib"/>
+          <file category="library" condition="CM7_BE_ARMCC"  name="Network_DS/Lib/ARM/Net_Dbg_CM3_B.lib"/>
+          <file category="library" condition="CM7F_LE_ARMCC" name="Network_DS/Lib/ARM/Net_Dbg_CM3_L.lib"/>
+          <file category="library" condition="CM7F_BE_ARMCC" name="Network_DS/Lib/ARM/Net_Dbg_CM3_B.lib"/>
+        </files>
+      </component>
+      <component Cgroup="Interface" Csub="ETH" condition="Network Driver ETH" maxInstances="1">
+        <!-- short component description -->
+        <description>Network Ethernet Interface</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Interface_ETH_%Instance%     /* Network Interface ETH %Instance% */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_ETH.h" attr="config" version="7.0"/>
+        </files>
+      </component>
+      <component Cgroup="Interface" Csub="PPP" Cvariant="Standard Modem" condition="Network Driver PPP">
+        <!-- short component description -->
+        <description>Network PPP over Serial Interface - Standard Modem</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Interface_PPP       /* Network Interface PPP */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_PPP.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Driver/Modem_Standard.c"/>
+        </files>
+      </component>
+      <component Cgroup="Interface" Csub="PPP" Cvariant="Null Modem" condition="Network Driver PPP">
+        <!-- short component description -->
+        <description>Network PPP over Serial Interface - Null Modem</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Interface_PPP       /* Network Interface PPP */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_PPP.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Driver/Modem_Null.c"/>
+        </files>
+      </component>
+      <component Cgroup="Interface" Csub="PPP" Cvariant="Custom Modem" condition="Network Driver PPP">
+        <!-- short component description -->
+        <description>Network PPP over Serial Interface</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Interface_PPP       /* Network Interface PPP */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_PPP.h" attr="config" version="7.0"/>
+        </files>
+      </component>
+      <component Cgroup="Interface" Csub="SLIP" Cvariant="Standard Modem" condition="Network Driver SLIP">
+        <!-- short component description -->
+        <description>Network SLIP Interface - Standard Modem</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Interface_SLIP      /* Network Interface SLIP */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_SLIP.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Driver/Modem_Standard.c"/>
+        </files>
+      </component>
+      <component Cgroup="Interface" Csub="SLIP" Cvariant="Null Modem" condition="Network Driver SLIP">
+        <!-- short component description -->
+        <description>Network SLIP Interface - Null Modem</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Interface_SLIP      /* Network Interface SLIP */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_SLIP.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Driver/Modem_Null.c"/>
+        </files>
+      </component>
+      <component Cgroup="Interface" Csub="SLIP" Cvariant="Custom Modem" condition="Network Driver SLIP">
+        <!-- short component description -->
+        <description>Network SLIP Interface</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Interface_SLIP      /* Network Interface SLIP */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_SLIP.h" attr="config" version="7.0"/>
+        </files>
+      </component>
+      <component Cgroup="Socket" Csub="UDP" condition="Network Interface">
+        <!-- short component description -->
+        <description>UDP Socket</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Socket_UDP          /* Network Socket UDP */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_UDP.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Template/UDP_Socket.c" attr="template" select="UDP Socket"/>
+        </files>
+      </component>
+      <component Cgroup="Socket" Csub="TCP" condition="Network Interface">
+        <!-- short component description -->
+        <description>TCP Socket</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Socket_TCP          /* Network Socket TCP */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_TCP.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Template/TCP_Socket_Server.c" attr="template" select="TCP Socket Server"/>
+          <file category="source" name="Network_DS/Template/TCP_Socket_Client.c" attr="template" select="TCP Socket Client"/>
+        </files>
+      </component>
+      <component Cgroup="Socket" Csub="BSD" condition="Network UDP/TCP">
+        <!-- short component description -->
+        <description>BSD Socket</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Socket_BSD          /* Network Socket BSD */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_BSD.h" attr="config" version="7.0"/>
+        </files>
+      </component>
+      <component Cgroup="Service" Csub="Web Server Compact" condition="Network Web Server Compact">
+        <!-- short component description -->
+        <description>Web Server (HTTP) with Read-only Web Resources (Compact)</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Web_Server_RO       /* Network Web Server with Read-only Web Resources */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_HTTP_Server.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Template/HTTP_Server_CGI.c" attr="template" select="HTTP Server CGI"/>
+          <file category="source" name="Network_DS/Template/HTTP_Server_Access.c" attr="template" select="HTTP Server Access"/>
+          <file category="source" name="Network_DS/Template/HTTP_Server_Multiuser.c" attr="template" select="HTTP Server Multi-user"/>
+          <file category="source" name="Network_DS/Template/HTTP_Server_Error.c" attr="template" select="HTTP Server Error Messages"/>
+        </files>
+      </component>
+      <component Cgroup="Service" Csub="Web Server" condition="Network Web Server">
+        <!-- short component description -->
+        <description>Web Server (HTTP) with Web Resources on File System</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Web_Server_FS       /* Network Web Server with Web Resources on File System */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_HTTP_Server.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Interface/HTTP_Server_FS.c" attr="interface" select="HTTP Server File I/O"/>
+          <file category="source" name="Network_DS/Template/HTTP_Server_CGI.c" attr="template" select="HTTP Server CGI"/>
+          <file category="source" name="Network_DS/Template/HTTP_Server_Access.c" attr="template" select="HTTP Server Access"/>
+          <file category="source" name="Network_DS/Template/HTTP_Server_Multiuser.c" attr="template" select="HTTP Server Multi-user"/>
+          <file category="source" name="Network_DS/Template/HTTP_Server_Error.c" attr="template" select="HTTP Server Error Messages"/>
+        </files>
+      </component>
+      <component Cgroup="Service" Csub="Telnet Server" condition="Network TCP">
+        <!-- short component description -->
+        <description>Telnet Server</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_Telnet_Server       /* Network Telnet Server */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_Telnet_Server.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Template/Telnet_Server_UIF.c" attr="template" select="Telnet Server"/>
+          <file category="source" name="Network_DS/Template/Telnet_Server_Access.c" attr="template" select="Telnet Server Access"/>
+          <file category="source" name="Network_DS/Template/Telnet_Server_Multiuser.c" attr="template" select="Telnet Server Multi-user"/>
+        </files>
+      </component>
+      <component Cgroup="Service" Csub="TFTP Server" condition="Network UDP and File System Drive">
+        <!-- short component description -->
+        <description>TFTP Server</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_TFTP_Server         /* Network TFTP Server */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_TFTP_Server.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Interface/TFTP_Server_FS.c" attr="interface" select="TFTP Server File I/O"/>
+          <file category="source" name="Network_DS/Template/TFTP_Server_Access.c" attr="template" select="TFTP Server Access"/>
+        </files>
+      </component>
+      <component Cgroup="Service" Csub="TFTP Client" condition="Network UDP and File System Drive">
+        <!-- short component description -->
+        <description>TFTP Client</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_TFTP_Client         /* Network TFTP Client */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_TFTP_Client.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Interface/TFTP_Client_FS.c" attr="interface" select="TFTP Client File I/O"/>
+          <file category="source" name="Network_DS/Template/TFTP_Client_UIF.c" attr="template" select="TFTP Client"/>
+        </files>
+      </component>
+      <component Cgroup="Service" Csub="FTP Server" condition="Network TCP and File System Drive">
+        <!-- short component description -->
+        <description>FTP Server</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_FTP_Server          /* Network FTP Server */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_FTP_Server.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Interface/FTP_Server_FS.c" attr="interface" select="FTP Server File I/O"/>
+          <file category="source" name="Network_DS/Template/FTP_Server_Event.c" attr="template" select="FTP Server Notification Events"/>
+          <file category="source" name="Network_DS/Template/FTP_Server_Access.c" attr="template" select="FTP Server Access"/>
+          <file category="source" name="Network_DS/Template/FTP_Server_Multiuser.c" attr="template" select="FTP Server Multi-user"/>
+        </files>
+      </component>
+      <component Cgroup="Service" Csub="FTP Client" condition="Network TCP and File System Drive">
+        <!-- short component description -->
+        <description>FTP Client</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_FTP_Client          /* Network FTP Client */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_FTP_Client.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Interface/FTP_Client_FS.c" attr="interface" select="FTP Client File I/O"/>
+          <file category="source" name="Network_DS/Template/FTP_Client_UIF.c" attr="template" select="FTP Client"/>
+        </files>
+      </component>
+      <component Cgroup="Service" Csub="DNS Client" condition="Network UDP">
+        <!-- short component description -->
+        <description>DNS Client</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_DNS_Client          /* Network DNS Client */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_DNS_Client.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Template/DNS_Client.c" attr="template" select="DNS Client"/>
+        </files>
+      </component>
+      <component Cgroup="Service" Csub="SMTP Client" condition="Network TCP">
+        <!-- short component description -->
+        <description>SMTP Client</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_SMTP_Client         /* Network SMTP Client */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_SMTP_Client.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Template/SMTP_Client_UIF.c" attr="template" select="SMTP Client"/>
+        </files>
+      </component>
+      <component Cgroup="Service" Csub="SNMP Agent" condition="Network UDP">
+        <!-- short component description -->
+        <description>SNMP Agent</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_SNMP_Agent          /* Network SNMP Agent */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_SNMP_Agent.h" attr="config" version="7.0"/>
+          <file category="source" name="Network_DS/Template/SNMP_Agent_MIB.c" attr="template" select="SNMP Agent"/>
+        </files>
+      </component>
+      <component Cgroup="Service" Csub="SNTP Client" condition="Network UDP">
+        <!-- short component description -->
+        <description>SNTP Client</description>
+        <RTE_Components_h>
+          <!-- the following content goes into file 'RTE_Components.h' -->
+          #define RTE_Network_SNTP_Client         /* Network SNTP Client */
+        </RTE_Components_h>
+        <files>
+          <file category="source" name="Network_DS/Config/Net_Config_SNTP_Client.h" attr="config" version="7.0"/>
+        </files>
+      </component>
+    </bundle>
+    <!-- CMSIS Driver -->
+    <component Cclass="CMSIS Driver" Cgroup="Ethernet PHY" Csub="DP83848C" Capiversion="2.00" Cversion="6.00" condition="CMSIS Core">
+      <!-- short component description -->
+      <description>Ethernet PHY DP83848C Driver</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_Drivers_PHY_DP83848C        /* Driver PHY DP83848C */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Network_DS/Driver/PHY_DP83848C.c"/>
+      </files>
+    </component>
+    <component Cclass="CMSIS Driver" Cgroup="Ethernet PHY" Csub="KSZ8081RNA" Capiversion="2.00" Cversion="6.00" condition="CMSIS Core">
+      <!-- short component description -->
+      <description>Ethernet PHY KSZ8081RNA Driver</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_Drivers_PHY_KSZ8081RNA      /* Driver PHY KSZ8081RNA/RND */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Network_DS/Driver/PHY_KSZ8081RNA.c"/>
+      </files>
+    </component>
+    <component Cclass="CMSIS Driver" Cgroup="Ethernet PHY" Csub="KSZ8061RNB" Capiversion="2.00" Cversion="1.00" condition="CMSIS Core">
+      <!-- short component description -->
+      <description>Ethernet PHY KSZ8061RNB Driver</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_Drivers_PHY_KSZ8061RNB      /* Driver PHY KSZ8061RNB */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Network_DS/Driver/PHY_KSZ8061RNB.c"/>
+      </files>
+    </component>
+    <component Cclass="CMSIS Driver" Cgroup="Ethernet PHY" Csub="ST802RT1" Capiversion="2.00" Cversion="6.00" condition="CMSIS Core">
+      <!-- short component description -->
+      <description>Ethernet PHY ST802RT1 Driver</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_Drivers_PHY_ST802RT1        /* Driver PHY ST802RT1 */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Network_DS/Driver/PHY_ST802RT1.c"/>
+      </files>
+    </component>
+    <component Cclass="CMSIS Driver" Cgroup="Ethernet PHY" Csub="LAN8720" Capiversion="2.00" Cversion="6.00" condition="CMSIS Core">
+      <!-- short component description -->
+      <description>Ethernet PHY LAN8720 Driver</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_Drivers_PHY_LAN8720         /* Driver PHY LAN8720 */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Network_DS/Driver/PHY_LAN8720.c"/>
+      </files>
+    </component>
+    <component Cclass="CMSIS Driver" Cgroup="Ethernet" Csub="KSZ8851SNL" Capiversion="2.01" Cversion="6.02" condition="CMSIS Core with RTOS and SPI Driver">
+      <!-- short component description -->
+      <description>Ethernet MAC + PHY KSZ8851SNL/SNLI Driver</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_Drivers_ETH_KSZ8851SNL      /* Driver ETH KSZ8851SNL */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Network_DS/Driver/ETH_KSZ8851SNL.c"/>
+      </files>
+    </component>
+  </components>
+  <examples>
+    <example name="BSD Client IPv4/IPv6" doc="Abstract.txt" folder="Network_DS\Examples\MCB1800\BSD_Client" version="1.0.1">
+      <description>Example using BSD sockets to send commands to remote server</description>
+      <board name="MCB1800" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="BSD_Client.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Network" Cgroup="Socket" Csub="BSD"/>
+        <category>Middleware</category>
+        <category>Network</category>
+        <keyword>BSD</keyword>
+      </attributes>
+    </example>
+    <example name="BSD Server IPv4/IPv6" doc="Abstract.txt" folder="Network_DS\Examples\MCB1800\BSD_Server" version="1.0.1">
+      <description>Example using BSD sockets to accept commands from remote clients</description>
+      <board name="MCB1800" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="BSD_Server.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Network" Cgroup="Socket" Csub="BSD"/>
+        <category>Middleware</category>
+        <category>Network</category>
+        <keyword>BSD</keyword>
+      </attributes>
+    </example>
+    <example name="FTP Server IPv4/IPv6" doc="Abstract.txt" folder="Network_DS\Examples\MCB1800\FTP_Server" version="1.0.1">
+      <description>File Server using FTP protocol with SD/MMC Memory Card as storage media</description>
+      <board name="MCB1800" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="FTP_Server.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Network" Cgroup="Service" Csub="FTP Server"/>
+        <category>Middleware</category>
+        <category>Network</category>
+        <keyword>FTP</keyword>
+      </attributes>
+    </example>
+    <example name="HTTP Server IPv4/IPv6" doc="Abstract.txt" folder="Network_DS\Examples\MCB1800\HTTP_Server" version="1.0.1">
+      <description>Compact Web Server with CGI interface</description>
+      <board name="MCB1800" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="HTTP_Server.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Network" Cgroup="Service" Csub="Web Server Compact"/>
+        <category>Middleware</category>
+        <category>Network</category>
+        <keyword>Web Server</keyword>
+        <keyword>HTTP</keyword>
+      </attributes>
+    </example>
+    <example name="Telnet Server IPv4/IPv6" doc="Abstract.txt" folder="Network_DS\Examples\MCB1800\Telnet_Server" version="1.0.1">
+      <description>Command-line Host service example using Telnet protocol</description>
+      <board name="MCB1800" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="Telnet_Server.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Network" Cgroup="Service" Csub="Telnet Server"/>
+        <category>Middleware</category>
+        <category>Network</category>
+        <keyword>Telnet</keyword>
+      </attributes>
+    </example>
+    <example name="TFTP Server IPv4/IPv6" doc="Abstract.txt" folder="Network_DS\Examples\MCB1800\TFTP_Server" version="1.0.1">
+      <description>Simple File Server using TFTP protocol with SD/MMC Memory Card as storage media</description>
+      <board name="MCB1800" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="TFTP_Server.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Network" Cgroup="Service" Csub="TFTP Server"/>
+        <category>Middleware</category>
+        <category>Network</category>
+        <keyword>TFTP</keyword>
+      </attributes>
+    </example>
+    <example name="HTTP Server IPv4/IPv6" doc="Abstract.txt" folder="Network_DS\Examples\MCBSTM32F200\HTTP_Server" version="1.0.1">
+      <description>Compact Web Server with CGI interface</description>
+      <board name="MCBSTM32F200" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="HTTP_Server.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Network" Cgroup="Service" Csub="Web Server Compact"/>
+        <category>Middleware</category>
+        <category>Network</category>
+        <keyword>Web Server</keyword>
+        <keyword>HTTP</keyword>
+      </attributes>
+    </example>
+    <example name="Telnet Server IPv4/IPv6" doc="Abstract.txt" folder="Network_DS\Examples\MCBSTM32F200\Telnet_Server" version="1.0.1">
+      <description>Command-line Host service example using Telnet protocol</description>
+      <board name="MCBSTM32F200" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="Telnet_Server.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Network" Cgroup="Service" Csub="Telnet Server"/>
+        <category>Middleware</category>
+        <category>Network</category>
+        <keyword>Telnet</keyword>
+      </attributes>
+    </example>
+    <example name="HTTP Server IPv4/IPv6" doc="Abstract.txt" folder="Network_DS\Examples\MCBSTM32F400\HTTP_Server" version="1.0.1">
+      <description>Compact Web Server with CGI interface</description>
+      <board name="MCBSTM32F400" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="HTTP_Server.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Network" Cgroup="Service" Csub="Web Server Compact"/>
+        <category>Middleware</category>
+        <category>Network</category>
+        <keyword>Web Server</keyword>
+        <keyword>HTTP</keyword>
+      </attributes>
+    </example>
+    <example name="Telnet Server IPv4/IPv6" doc="Abstract.txt" folder="Network_DS\Examples\MCBSTM32F400\Telnet_Server" version="1.0.1">
+      <description>Command-line Host service example using Telnet protocol</description>
+      <board name="MCBSTM32F400" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="Telnet_Server.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Network" Cgroup="Service" Csub="Telnet Server"/>
+        <category>Middleware</category>
+        <category>Network</category>
+        <keyword>Telnet</keyword>
+      </attributes>
+    </example>
+  </examples>
+</package>

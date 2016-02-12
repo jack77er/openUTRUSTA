@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1422632972 source:d:\db\dropbox\development\24ghz_kuechenbeleuchtung_steuerung\kuechenbeleuchtung_remote_em\src\startup_stm32l0xx.s
+
+1422632972 source:d:\db\dropbox\development\24ghz_kuechenbeleuchtung_steuerung\kuechenbeleuchtung_remote_em\src\system_stm32l0xx.c
+	"stm32l0xx.h"
+
+1422632972 d:\db\dropbox\development\24ghz_kuechenbeleuchtung_steuerung\kuechenbeleuchtung_remote_em\inc\stm32l0xx.h
+	"core_cm0plus.h"
+	"system_stm32l0xx.h"
+	<stdint.h>
+
+1422632972 d:\db\dropbox\development\24ghz_kuechenbeleuchtung_steuerung\kuechenbeleuchtung_remote_em\cmsis\core_cm0plus.h
+	<stdint.h>
+	<core_cmInstr.h>
+	<core_cmFunc.h>
+
+1422632972 d:\db\dropbox\development\24ghz_kuechenbeleuchtung_steuerung\kuechenbeleuchtung_remote_em\cmsis\core_cminstr.h
+	<cmsis_iar.h>
+
+1422632972 d:\db\dropbox\development\24ghz_kuechenbeleuchtung_steuerung\kuechenbeleuchtung_remote_em\cmsis\core_cmfunc.h
+	<cmsis_iar.h>
+
+1422632972 d:\db\dropbox\development\24ghz_kuechenbeleuchtung_steuerung\kuechenbeleuchtung_remote_em\inc\system_stm32l0xx.h
+
+1422632972 source:d:\db\dropbox\development\24ghz_kuechenbeleuchtung_steuerung\kuechenbeleuchtung_remote_em\src\main.c
+	"stm32l0xx.h"
+
